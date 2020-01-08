@@ -1,6 +1,6 @@
 # BombDefuse
 
-The Bomb Defusal RGB Game is my unique interpretation of the RGB color game, a static webpage rite of passage. It's primary purpose is to show a more advanced understanding of CSS and Javascript than is typically required.
+The Bomb Defusal RGB Game is my unique interpretation of the RGB color game, a static web app rite of passage. It's primary purpose is to show a more advanced understanding of CSS and Javascript than is typically required.
 
 You must click on the correct wire as described by the header e.g. Cut the RGB(255, 255, 255) wire!
 
@@ -14,8 +14,8 @@ Some additional features that I've added that isn't typical of the standard RGB 
 -LED light indicates 3 states of the bomb, idle, detonation sequence initiated and defused. 
 -Buttons on the bomb are interactive with the display. This is purely cosmetic and has no impact on the game mechanics. 
 -Bomb is created entirely out of CSS
--Added a hard difficulty expanding the total wires to 9. Typical the RGB color game only has two difficulties displaying 3 and 6 squares.
-
+-Added a hard difficulty expanding the total wires to 9. Typically the RGB color game only has two difficulties displaying 3 and 6 squares.
+-removed most of the Interface replacing it with interactive parts to the bomb and visual feedback to guide players.
 
 
 EULA
