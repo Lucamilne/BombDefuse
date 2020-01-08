@@ -1,6 +1,6 @@
 # BombDefuse
 
-The Bomb Defusal RGB Game is an evolution of the classic statis webpage rite of passage that is the RGB color game.
+The Bomb Defusal RGB Game is my unique interpretation of the RGB color game, a static webpage rite of passage. It's primary purpose is to show a more advanced understanding of CSS and Javascript than is typically required.
 
 You must click on the correct wire as described by the header e.g. Cut the RGB(255, 255, 255) wire!
 
