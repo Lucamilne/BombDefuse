@@ -9,15 +9,6 @@ body {
   background-color: #909090;
 }
 
-.square {
-  float: left;
-  width: 30%;
-  margin: 1.66%;
-  padding-bottom: 30%;
-  border-radius: 8px;
-  background-color: #606060;
-}
-
 .bar {
   height: 40px;
   padding-left: 5%;
@@ -32,11 +23,6 @@ button {
   color: black;
   border: none;
   background-color: transparent;
-}
-
-.selected {
-  border-bottom: 3px solid #606060;
-  background-color: lightgrey;
 }
 
 h1 {
@@ -239,7 +225,7 @@ h1 {
   border: 12px solid #202020;
   border-radius: 1px;
   background-color: rgb(213, 213, 82);
-  box-shadow: 0 0 0 5px #171717, inset 0 0 10px 5px rgba(0, 0, 0, 0.3),
+  box-shadow: 0 0 0 5px #171717, inset 0 0 10px 3px rgba(0, 0, 0, 0.3),
     0 5px 10px 5px rgba(0, 0, 0, 0.5);
   direction: rtl;
 }
@@ -309,8 +295,10 @@ h1 {
   background-color: #404040;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 -2px 3px 0 rgba(0, 0, 0, 0.4),
-    0 0 0 2px black;
+    0 0 0 2px #303030;
 }
+
+
 
 .keypad-wires {
   position: absolute;
@@ -340,51 +328,69 @@ h1 {
     0 8px 13px 5px rgba(0, 0, 0, 0.2), 0 18px 23px 15px rgba(0, 0, 0, 0.1);
 }
 
-#transistor,
-#transistor::after {
+button {
   position: relative;
   z-index: 2;
-  float: right;
-  width: 25px;
-  height: 28px;
+  top: 76px;
+  left: 10px;
+  margin: 2px;
+  float: left;
+  width: 33px;
+  height: 32px;
+  cursor: pointer;
   border-right: 3px solid #303030;
   border-bottom: 3px solid #303030;
   border-left: 3px solid #303030;
-  border-radius: 25px;
+  border-radius: 50%;
   background-color: #606060;
-  box-shadow: inset 0 1px 3px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -8px 0 0 rgba(0, 0, 0, 0.3), 0 4px 3px rgba(0, 0, 0, 0.3),
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -4px 0 0 rgba(0, 0, 0, 0.3), 0 4px 3px rgba(0, 0, 0, 0.3),
     0 8px 13px 5px rgba(0, 0, 0, 0.2), 0 18px 23px 15px rgba(0, 0, 0, 0.1);
 }
 
-#transistor {
-  top: 82px;
-  right: 12px;
+button:focus {
+  outline:0;
 }
 
-#transistor::after {
-  top: 0;
-  right: 32px;
-
-  content: "";
+.circuit button:hover {
+  top: 78px;
+  height: 30px;
+  border-top: 1px solid;
 }
 
-/* .blockwire {
-    position: absolute;
-    box-sizing: border-box;
-    top: 140px;
-    left: 553px;
-    width: 200px;
-    height: 300px;
-    background: repeating-radial-gradient(
-    circle,
-        purple,
-        purple 10px,
-        #4b026f 10px, 
-        #4b026f 20px
-    );
-    border-radius: 0px 50% 50% 0px;
-} */
+.circuit button:nth-of-type(1):hover {
+  border-color: rgb(0, 150, 0);
+  background-color: rgba(0, 255, 0, 0.9);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+  inset 0 -1px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(0, 255, 0, 0.2),
+  0 0px 13px 5px rgba(0, 255, 0, 0.1), 0 0px 23px 15px rgba(0, 255, 0, 0.1);
+}
+
+.circuit button:nth-of-type(2):hover {
+  border-color: rgb(150, 125, 0);
+  background-color: rgba(255, 215, 0, 0.9);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+  inset 0 -1px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(255, 215, 0, 0.2),
+  0 0px 13px 5px rgba(255, 215, 0, 0.1), 0 0px 23px 15px rgba(255, 215, 0, 0.1);
+}
+
+
+.circuit button:nth-of-type(3):hover {
+  border-color: rgb(150, 0, 0);
+  background-color: rgba(255, 0, 0, 0.9);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+  inset 0 -1px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(255, 0, 0, 0.2),
+  0 0px 13px 5px rgba(255, 0, 0, 0.1), 0 0px 23px 15px rgba(255, 0, 0, 0.1);
+}
+
+#blockwire {
+  position: absolute;
+  top: -20px;
+  left: 200px;
+  height: 150px;
+  width:50px;
+  background: repeating-linear-gradient(90deg, transparent, #303030 1px, #101010 9px, transparent 10px);
+}
 
 .wire {
   position: absolute;
@@ -412,10 +418,10 @@ h1 {
   background-color: #fff;
   box-shadow: 0 0 0 2px #202020, inset 4px 0 3px rgba(0, 0, 0, 0.4),
     inset 8px 0 5px rgba(0, 0, 0, 0.2), inset -4px 0 3px rgba(0, 0, 0, 0.4),
-    inset -8px 0 13px rgba(0, 0, 0, 0.2);
+    inset -8px 0 5px rgba(0, 0, 0, 0.2);
 }
 
-#wire:hover {
+.wire:hover {
   cursor: pointer;
 }
 

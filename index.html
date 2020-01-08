@@ -14,14 +14,14 @@
 
 <body>
     <h1>Cut the <span id="goal"></span> wire on the bomb!</h1>
-    <div class="bar">
-        <button id="easy">easy</button>
+    <nav class="bar">
+        <!-- <button id="easy">easy</button>
         <button id="medium" class="selected">medium</button>
-        <button id="hard">hard</button>
+        <button id="hard">hard</button> -->
         <span id="message"></span>
         <button id="reset">reset</button>
-    </div>
-    <div class="container">
+    </nav>
+    <main class="container">
         <div class="wire" id="wire1"></div>
         <div class="wire" id="wire2"></div>
         <div class="wire" id="wire3"></div>
@@ -38,29 +38,32 @@
         <div class="bomb c4-1"></div>
         <div class="bomb c4-2"></div>
         <div class="bomb c4-3"></div>
-        <div class="circuit">
-            <div id="transistor"></div>
-        </div>
+        <nav class="circuit">
+            <button id="easy"></button>
+            <button class="selected" id="medium"></button>
+            <button id="hard"></button>
+            <div id="blockwire"></div>
+        </nav>
         <div class="tape"></div>
         <div class="blockwire2"></div>
         <div class="keypad-wires"></div>
         <div class="calc-base">
-            <div class="bomb-button bomb-number">1</div>
-            <div class="bomb-button bomb-number">2</div>
-            <div class="bomb-button bomb-number">3</div>
-            <div class="bomb-button bomb-number">4</div>
-            <div class="bomb-button bomb-number">5</div>
-            <div class="bomb-button bomb-number">6</div>
-            <div class="bomb-button bomb-number">7</div>
-            <div class="bomb-button bomb-number">8</div>
-            <div class="bomb-button bomb-number">9</div>
-            <div class="bomb-button" id="backspace">*</div>
-            <div class="bomb-button bomb-number">0</div>
-            <div class="bomb-button" id="clear">#</div>
+            <li class="bomb-button bomb-number">1</li>
+            <li class="bomb-button bomb-number">2</li>
+            <li class="bomb-button bomb-number">3</li>
+            <li class="bomb-button bomb-number">4</li>
+            <li class="bomb-button bomb-number">5</li>
+            <li class="bomb-button bomb-number">6</li>
+            <li class="bomb-button bomb-number">7</li>
+            <li class="bomb-button bomb-number">8</li>
+            <li class="bomb-button bomb-number">9</li>
+            <li class="bomb-button" id="backspace">*</li>
+            <li class="bomb-button bomb-number">0</li>
+            <li class="bomb-button" id="clear">#</li>
         </div>
         <!-- <div class="blockwire"></div> -->
         <div id="calc-display"></div>
-    </div>
+    </main>
     <script type="text/javascript" src="Test.js"></script>
 </body>
 

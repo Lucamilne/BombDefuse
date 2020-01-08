@@ -16,6 +16,7 @@ var LEDdetonate = document.querySelector("#detonate");
 var displayContent = [];
 // secret difficulty?
 
+//color this 
 function random() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
@@ -60,27 +61,34 @@ function newGame() {
     for (let i = 0; i < difficulty; i++) {
         squares[i].style.display = "block";
         squares[i].style.borderColor = colors[i];
-        squares[i].addEventListener("click", function () {
-            if (this.style.borderColor === pickedColor) {
-                correct();
-            } else {
-                message.textContent = "Please try again";
-                this.style.display = "none";
-                detonate();
-            }
-        })
+        squares[i].addEventListener("click", check)
     }
     resetDisplay();
 };
 
-//h1 is not resetting correctly.
+//h1 is not resetting correctly
+//remove h1 from js
 function correct() {
-    document.querySelector("h1").style.backgroundColor = pickedColor;
     message.textContent = "Correct! Play again?";
     reset.textContent = "Choose new colours";
     defusal();
-    display.textContent = "Err";
+    display.textContent = "*********";
+    correctColor();
+    //remove interactivity on game completion
+    for (let i = 0; i < difficulty; i++) {
+        squares[i].removeEventListener("click", check)
+    }
 }
+
+function check() {
+    if (this.style.borderColor === pickedColor) {
+        correct();
+    } else {
+        message.textContent = "Please try again";
+        this.style.display = "none";
+        detonate();
+    }
+};
 
 easy.addEventListener("click", function () {
     setDifficulty(3);
@@ -119,11 +127,15 @@ backspace.addEventListener("click", function () {
     }
 })
 
+// background colour functionality
+function correctColor() {
+    document.querySelector("body").style.backgroundColor = pickedColor;
+    document.querySelector("body").style.transition = "background-color 4s ease";
+}
+
 //LCD screen interactivity
 function displayContentUpdate() {
-    if (display.textContent.length < 8) {
         display.textContent = displayContent.join('');
-    }
 };
 
 function resetDisplay() {
@@ -133,7 +145,9 @@ function resetDisplay() {
 
 for (let i = 0; i < bombNumber.length; i++) {
     bombNumber[i].addEventListener("click", function () {
-        displayContent.push(this.textContent);
+        if (display.textContent.length < 8) {
+            displayContent.push(this.textContent);
+        }
         displayContentUpdate();
     })
 };
