@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bomb Defusal RGB Game</title>
+    <link rel="stylesheet" type="text/css" href="test.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>Cut the <span id="goal"></span> wire on the bomb!</h1>
+    <div class="bar">
+        <button id="easy">easy</button>
+        <button id="medium" class="selected">medium</button>
+        <button id="hard">hard</button>
+        <span id="message"></span>
+        <button id="reset">reset</button>
+    </div>
+    <div class="container">
+        <div class="wire" id="wire1"></div>
+        <div class="wire" id="wire2"></div>
+        <div class="wire" id="wire3"></div>
+        <div class="wire" id="wire4"></div>
+        <div class="wire" id="wire5"></div>
+        <div class="wire" id="wire6"></div>
+        <div class="wire" id="wire7"></div>
+        <div class="wire" id="wire8"></div>
+        <div class="wire" id="wire9"></div>
+        <div class="receiver">
+            <div class="LED"></div>
+            <div id="detonate"></div>
+        </div>
+        <div class="bomb c4-1"></div>
+        <div class="bomb c4-2"></div>
+        <div class="bomb c4-3"></div>
+        <div class="circuit">
+            <div id="transistor"></div>
+        </div>
+        <div class="tape"></div>
+        <div class="blockwire2"></div>
+        <div class="keypad-wires"></div>
+        <div class="calc-base">
+            <div class="bomb-button bomb-number">1</div>
+            <div class="bomb-button bomb-number">2</div>
+            <div class="bomb-button bomb-number">3</div>
+            <div class="bomb-button bomb-number">4</div>
+            <div class="bomb-button bomb-number">5</div>
+            <div class="bomb-button bomb-number">6</div>
+            <div class="bomb-button bomb-number">7</div>
+            <div class="bomb-button bomb-number">8</div>
+            <div class="bomb-button bomb-number">9</div>
+            <div class="bomb-button" id="backspace">*</div>
+            <div class="bomb-button bomb-number">0</div>
+            <div class="bomb-button" id="clear">#</div>
+        </div>
+        <!-- <div class="blockwire"></div> -->
+        <div id="calc-display"></div>
+    </div>
+    <script type="text/javascript" src="Test.js"></script>
+</body>
+
+</html>

@@ -1,361 +1,456 @@
+@font-face {
+  font-family: "Calculator";
+  src: url("digital-7.ttf");
+}
+
 body {
-    background-color: #909090;
-    margin: 0;
+  margin: 0;
+
+  background-color: #909090;
 }
 
 .square {
-    padding-bottom: 30%;
-    width: 30%;
-    background-color: #606060;
-    margin: 1.66%;
-    float: left;
-    border-radius: 8px;
+  float: left;
+  width: 30%;
+  margin: 1.66%;
+  padding-bottom: 30%;
+  border-radius: 8px;
+  background-color: #606060;
 }
 
 .bar {
-    background-color: white;
-    height: 40px;
-    padding-left: 10%;
+  height: 40px;
+  padding-left: 5%;
+
+  background-color: white;
 }
 
 button {
-    background-color: transparent;
-    border: none;
-    color: black;
-    text-transform: uppercase;
-    font-family: monospace;
-    height: 40px;
+  font-family: monospace;
+  height: 40px;
+  text-transform: uppercase;
+  color: black;
+  border: none;
+  background-color: transparent;
 }
 
 .selected {
-    border-bottom: 3px solid #606060;
-    background-color: lightgrey;
+  border-bottom: 3px solid #606060;
+  background-color: lightgrey;
 }
 
 h1 {
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-    color: white;
-    text-transform: uppercase;
-    font-family: monospace;
-    height: 150px;
+  font-family: monospace;
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
 }
 
 #reset {
-    float: right;
-    margin-right: 10%;
+  float: right;
+  margin-right: 10%;
 }
 
 #message {
-    font-family: sans-serif;
-    margin: 0 auto;
-    text-align: center;
+  font-family: sans-serif;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .container {
-    position: relative; 
-    margin: 0 auto;
-    margin-top: 150px;
-    margin-bottom: 50px;;
-    width: auto;
-    height: auto;
-    min-width: 300px;
-    min-height: 600px;
-    max-width: 80%;
-    height: 800px;
+  position: relative;
+
+  width: 660px;
+  height: 800px;
+  margin: 0 auto;
+  margin-top: 140px;
+  margin-bottom: 50px;
 }
 
 .bomb {
-    position: absolute;
-    top: 0px;
-    box-sizing: border-box;
-    width: 200px;
-    height: 800px;
-    margin: 0px;
-    /* border: 5px solid rgb(123, 106, 78); */
-    background-color: rgb(123, 106, 78);
-    background-image: url("https://www.transparenttextures.com/patterns/exclusive-paper.png");
-    border-radius: 12px;
-    box-shadow: 
-        inset 5px 0px 8px 0px rgba(0, 0, 0, 0.5),
-        inset -5px -5px 8px 0px rgba(0, 0, 0, 0.4),
-        0px 5px 10px 10px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  width: 200px;
+  height: 800px;
+  margin: 0;
+  border-radius: 10px;
+  background-color: rgb(123, 106, 78);
+  background-image: url("https://www.transparenttextures.com/patterns/exclusive-paper.png");
+  box-shadow: inset 5px 0 8px 0 rgba(0, 0, 0, 0.5),
+    inset -5px -5px 8px 0 rgba(0, 0, 0, 0.4), 0 4px 3px rgba(0, 0, 0, 0.4),
+    0 8px 13px 5px rgba(0, 0, 0, 0.3), 0 18px 23px 15px rgba(0, 0, 0, 0.2),
+    0 0 0 2px rgb(93, 76, 48);
 }
 
-#receiver {
-    position: absolute;
-    top: 120px;
-    height: 160px;
-    width: 60px;
-    background-color: #101010;
-    border-radius: 3px;
-    box-shadow: 
-        0px 5px 5px 3px rgba(0, 0, 0, 0.4);
+.receiver {
+  position: absolute;
+  top: 120px;
+  width: 60px;
+  height: 160px;
+  border-radius: 3px;
+  background-color: #101010;
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px 5px rgba(0, 0, 0, 0.3),
+    0 18px 23px 15px rgba(0, 0, 0, 0.2);
 }
 
-#receiver::before {
-    content: "";
-    position: absolute;
-    top: 453px;
-    left: 205px;
-    width: 310px;
-    height: 18px;
-    background-color: rgb(233, 231, 208);
-    border-radius: 2px;
+.receiver::before {
+  position: absolute;
+  z-index: 1;
+  top: 453px;
+  left: 205px;
+  width: 310px;
+  height: 18px;
+
+  content: "";
+  border-radius: 2px;
+  background-color: rgb(233, 231, 208);
+}
+
+.LED {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.LED-idle {
+  animation: beep 1s infinite;
+
+  background-color: rgb(255, 0, 0);
+  box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.3);
+}
+
+.detonate {
+  position: absolute;
+  top: 12px;
+  left: 36px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+}
+
+.LED-correct {
+  background-color: rgb(0, 255, 0);
+  box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.3);
+}
+
+.LED-incorrect {
+  animation: beep 0.25s infinite;
+
+  background-color: rgb(255, 0, 0);
+  box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.3);
+}
+
+@keyframes beep {
+  100% {
+    z-index: -1;
+  }
 }
 
 .c4-1 {
-    left: 60px;
-    position: absolute;
-    border-right: 0px;
+  position: absolute;
+  left: 60px;
+  border-right: 0;
 }
 
 .c4-2 {
-    left: 260px;
-    position: absolute;
+  position: absolute;
+  left: 260px;
 }
 
 .c4-3 {
-    left: 460px;
-    position: absolute;
-    border-left: 0px;
+  position: absolute;
+  left: 460px;
+  border-left: 0;
 }
 
 .circuit {
-    position: absolute;
-    top: 160px;
-    left: 210px;
-    height: 460px;
-    width: 300px;
-    border: 1px solid #404040;
-    background: repeating-linear-gradient(0.38turn,
-        rgb(69, 87, 76), 
-        rgb(69, 87, 76) 5px, 
-        rgba(79, 97, 86, 1) 5px, 
-        rgba(79, 97, 86, 1) 10px);
-    box-shadow: 
-        0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 160px;
+  left: 210px;
+  width: 300px;
+  height: 460px;
+  border: 2px solid rgb(39, 57, 46);
+  background: repeating-linear-gradient(
+    0.38turn,
+    rgb(69, 87, 76),
+    rgb(69, 87, 76) 5px,
+    rgba(79, 97, 86, 1) 5px,
+    rgba(79, 97, 86, 1) 10px
+  );
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .circuit::before {
-    content: "";
-    position: absolute;
-    top: -110px;
-    left: -50px;
-    height: 120px;
-    width: 400px;
-    border-radius: 5px;
-    border-left: 1px solid #404040;
-    border-right: 1px solid #404040;
-    background: repeating-linear-gradient(0.38turn,
-        rgb(69, 87, 76), 
-        rgb(69, 87, 76) 5px, 
-        rgba(79, 97, 86, 1) 5px, 
-        rgba(79, 97, 86, 1) 10px);
-    box-shadow: 
-        0px 10px 10px 5px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: -115px;
+  left: -35px;
+  width: 370px;
+  height: 125px;
+
+  content: "";
+  border: 2px solid rgb(39, 57, 46);
+  border-radius: 5px;
+  background: repeating-linear-gradient(
+    0.38turn,
+    rgb(69, 87, 76),
+    rgb(69, 87, 76) 5px,
+    rgba(79, 97, 86, 1) 5px,
+    rgba(79, 97, 86, 1) 10px
+  );
+  box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .circuit::after {
-    content: "";
-    position: absolute;
-    top: 115px;
-    left: -5px;
-    height: 18px;
-    width: 310px;
-    background-color: rgb(233, 231, 208);
-    border-radius: 2px;
+  position: absolute;
+  z-index: 1;
+  top: 115px;
+  left: -5px;
+  width: 310px;
+  height: 18px;
+
+  content: "";
+  border-radius: 2px;
+  background-color: rgb(233, 231, 208);
 }
 
-.calc-display {
-    display: flex;
-    box-sizing: border-box;
-    position: absolute;
-    top: 65px;
-    left: 190px;
-    height: 75px;
-    width: 340px;
-    border: 12px solid #202020;
-    border-radius: 1px;
-    background-color: rgb(213, 213, 82);
-    align-items: center;
-    justify-content: right;
-    box-shadow: 
-        0px 0px 0px 5px #171717,
-        inset 0px 0px 10px 5px rgba(0, 0, 0, 0.3),
-        0px 5px 10px 5px rgba(0, 0, 0, 0.5);
+#calc-display {
+  font-family: "Calculator";
+  font-size: 4em;
+  position: absolute;
+  top: 68px;
+  left: 202px;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  box-sizing: border-box;
+  width: 320px;
+  height: 75px;
+  letter-spacing: 6px;
+  border: 12px solid #202020;
+  border-radius: 1px;
+  background-color: rgb(213, 213, 82);
+  box-shadow: 0 0 0 5px #171717, inset 0 0 10px 5px rgba(0, 0, 0, 0.3),
+    0 5px 10px 5px rgba(0, 0, 0, 0.5);
+  direction: rtl;
 }
 
 .calc-base {
-    position: absolute;
-    box-sizing: border-box;
-    top: 293px;
-    left: 220px;
-    width: 270px;
-    height: 280px;
-    background-color: #404040;
-    background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
-    display: grid;
-    grid-template-columns: repeat(3, 60px);
-    grid-template-rows: repeat(4, 60px);
-    column-gap: 20px;
-    row-gap: 8px;
-    padding-top: 8px;
-    padding-left: 25px;
-    box-shadow: 
-        0px 0px 10px 5px rgba(0, 0, 0, 0.5)
+  position: absolute;
+  top: 293px;
+  left: 226px;
+  display: grid;
+  box-sizing: border-box;
+  width: 270px;
+  height: 280px;
+  padding-top: 1px;
+  padding-left: 25px;
+  background-color: #404040;
+  background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(4, auto);
+  column-gap: 20px;
+  row-gap: 5px;
 }
 
 .bomb-button {
-    display: flex;
-    background-color: rgb(216, 215, 194);
-    padding-left: 32%;
-    padding-bottom: 8px;
-    border-radius: 6px;
-    align-items: center;
-    font-family: sans-serif;
-    font-size: 40px;
-    box-shadow:
-        inset 0px -8px rgba(0, 0, 0, 0.6),
-        0px 5px 5px 5px rgba(0, 0, 0, 0.4);
+  font-family: sans-serif;
+  font-size: 40px;
+
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  height: 52px;
+  padding-bottom: 8px;
+  padding-left: 32%;
+  border-radius: 6px;
+  background-color: rgb(216, 215, 194);
+  box-shadow: inset 0 -8px rgba(0, 0, 0, 0.6), 0 5px 5px 5px rgba(0, 0, 0, 0.4),
+    0 0 0 2px black;
+}
+
+.calc-base .bomb-button:hover {
+  padding-bottom: 4px;
+
+  transform: translate(0, 6px);
+  box-shadow: inset 0 -4px rgba(0, 0, 0, 0.6), 0 3px 5px 4px rgba(0, 0, 0, 0.4),
+    0 0 0 2px black;
 }
 
 .tape {
-    position: absolute;
-    top: 160px;
-    width: 660px;
-    height: 80px;
-    background-color: #404040;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
-    box-shadow: 
-        0px 3px 3px 0px rgba(0, 0, 0, 0.4),
-        0px -1px 2px 0px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 160px;
+  width: 660px;
+  height: 80px;
+  background-color: #404040;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 -1px 2px 0 rgba(0, 0, 0, 0.4),
+    0 0 0 2px #303030;
 }
 
 .tape::after {
-    content: "";
-    position: absolute;
-    top: 440px;
-    left: 60px;
-    width: 600px;
-    height: 80px;
-    background-color: #404040;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
-    box-shadow: 
-        0px 3px 3px 0px rgba(0, 0, 0, 0.4),
-        0px -2px 3px 0px rgba(0, 0, 0, 0.4);
-}
+  position: absolute;
+  top: 440px;
+  left: 60px;
+  width: 600px;
+  height: 80px;
 
-.tape::before {
-    content: "";
-    position: absolute;
-    top: 300px;
-    left: 470px;
-    width: 85px;
-    height: 40px;
-    background-color: white;
+  content: "";
+  background-color: #404040;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 -2px 3px 0 rgba(0, 0, 0, 0.4),
+    0 0 0 2px black;
 }
 
 .keypad-wires {
-    position: absolute;
-    box-sizing: border-box;
-    top: 350px;
-    left: 165px;
-    width: 150px;
-    height: 150px;
-    border: 9px solid white;
-    border-radius: 150px;
+  position: absolute;
+  top: 350px;
+  left: 165px;
+  box-sizing: border-box;
+  width: 150px;
+  height: 150px;
+  border: 9px solid white;
+  border-radius: 150px;
+  box-shadow: 0 0 0 2px, inset 0 0 0 2px, 0 4px 3px rgba(0, 0, 0, 0.4),
+    0 8px 13px 5px rgba(0, 0, 0, 0.3), 0 18px 23px 15px rgba(0, 0, 0, 0.2);
 }
 
-.keypad-wires::before {
-    content: "";
-    position: absolute;
-    box-sizing: border-box;
-    top: 0px;
-    left: 0px;
-    width: 120px;
-    height: 120px;
-    border: 9px solid darkred;
-    border-radius: 120px 120px 0 120px;
+.keypad-wires::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+
+  content: "";
+  border: 9px solid darkred;
+  border-radius: 120px 120px 0 120px;
+  box-shadow: 0 0 0 2px, inset 0 0 0 2px, 0 4px 3px rgba(0, 0, 0, 0.3),
+    0 8px 13px 5px rgba(0, 0, 0, 0.2), 0 18px 23px 15px rgba(0, 0, 0, 0.1);
 }
 
-.blockwire {
+#transistor,
+#transistor::after {
+  position: relative;
+  z-index: 2;
+  float: right;
+  width: 25px;
+  height: 28px;
+  border-right: 3px solid #303030;
+  border-bottom: 3px solid #303030;
+  border-left: 3px solid #303030;
+  border-radius: 25px;
+  background-color: #606060;
+  box-shadow: inset 0 1px 3px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -8px 0 0 rgba(0, 0, 0, 0.3), 0 4px 3px rgba(0, 0, 0, 0.3),
+    0 8px 13px 5px rgba(0, 0, 0, 0.2), 0 18px 23px 15px rgba(0, 0, 0, 0.1);
+}
+
+#transistor {
+  top: 82px;
+  right: 12px;
+}
+
+#transistor::after {
+  top: 0;
+  right: 32px;
+
+  content: "";
+}
+
+/* .blockwire {
     position: absolute;
     box-sizing: border-box;
     top: 140px;
-    left: 463px;
-    width: 40px;
-    height: 80px;
-    background-color: white;
-}
-
-.blockwire::before {
-    content: "";
-    position: absolute;
-    top: 80px;
-    width: 50px;
-    height: 80px;
-    border: 40px solid white;
-    border-top: 0px;
-    border-right: 0px;
-    border-radius: 0 0 0 100px;
-}
-
-.blockwire::after {
-    content: "";
-    position: absolute;
-    top: 160px;
-    left: 90px;
-    width: 50px;
-    height: 120px;
-    border: 40px solid white;
-    border-left: 0px;
-    border-radius: 0px 80px 80px 0px;
-}
+    left: 553px;
+    width: 200px;
+    height: 300px;
+    background: repeating-radial-gradient(
+    circle,
+        purple,
+        purple 10px,
+        #4b026f 10px, 
+        #4b026f 20px
+    );
+    border-radius: 0px 50% 50% 0px;
+} */
 
 .wire {
-    position: absolute;
-    top: -150px;
-    width: 100px;
-    height: 200px;
-    box-sizing: border-box;
-    border: 10px solid grey;
-    border-radius: 50px 60px 100px 0px;
+  position: absolute;
+  top: -125px;
+  box-sizing: border-box;
+  width: 100px;
+  height: 175px;
+  border: 10px solid;
+  border-radius: 50px 75px 110px 0;
+  box-shadow: 0 0 0 2px, inset 0 0 0 2px, inset 0 4px 3px rgba(0, 0, 0, 0.2),
+    inset 0 8px 13px 5px rgba(0, 0, 0, 0.2),
+    inset 0 18px 23px 15px rgba(0, 0, 0, 0.1), 0 4px 3px rgba(0, 0, 0, 0.2),
+    0 8px 13px 5px rgba(0, 0, 0, 0.2), 0 18px 23px 15px rgba(0, 0, 0, 0.1);
 }
 
-.wire1 {
-    left: 100px;
+.wire::after {
+  position: absolute;
+  bottom: 40px;
+  left: -15px;
+  width: 20px;
+  height: 15px;
+
+  content: "";
+  border-radius: 7px 7px 0 0;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px #202020, inset 4px 0 3px rgba(0, 0, 0, 0.4),
+    inset 8px 0 5px rgba(0, 0, 0, 0.2), inset -4px 0 3px rgba(0, 0, 0, 0.4),
+    inset -8px 0 13px rgba(0, 0, 0, 0.2);
 }
 
-.wire2 {
-    left: 150px;
+#wire:hover {
+  cursor: pointer;
 }
 
-.wire3 {
-    left: 200px;
+#wire1 {
+  left: 100px;
 }
 
-.wire4 {
-    left: 300px;
+#wire2 {
+  left: 150px;
 }
 
-.wire5 {
-    left: 350px;
+#wire3 {
+  left: 200px;
 }
 
-.wire6 {
-    left: 400px;
+#wire4 {
+  left: 300px;
 }
 
-.wire7 {
-    left: 500px;
+#wire5 {
+  left: 350px;
 }
 
-.wire8 {
-    left: 550px;
+#wire6 {
+  left: 400px;
 }
 
-.wire9 {
-    left: 600px;
+#wire7 {
+  left: 500px;
+}
+
+#wire8 {
+  left: 550px;
+}
+
+#wire9 {
+  left: 600px;
 }

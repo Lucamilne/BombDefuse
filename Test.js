@@ -7,6 +7,13 @@ var medium = document.querySelector("#medium");
 var hard = document.querySelector("#hard");
 var message = document.querySelector("#message");
 var pickedColorDisplay = document.querySelector("#goal");
+var bombNumber = document.querySelectorAll(".bomb-number");
+var display = document.querySelector("#calc-display");
+var clearDisplay = document.querySelector("#clear");
+var backspace = document.querySelector("#backspace");
+var LED = document.querySelector(".LED");
+var LEDdetonate = document.querySelector("#detonate");
+var displayContent = [];
 // secret difficulty?
 
 function random() {
@@ -45,7 +52,8 @@ function resetGame() {
     for (let i = 0; i < 9; i++) {
         squares[i].style.display = "none";
     }
-    newGame();
+    newGame()
+    resetIdleLED();
 }
 
 function newGame() {
@@ -58,18 +66,20 @@ function newGame() {
             } else {
                 message.textContent = "Please try again";
                 this.style.display = "none";
+                detonate();
             }
         })
     }
+    resetDisplay();
 };
 
+//h1 is not resetting correctly.
 function correct() {
-    for (let i = 0; i < difficulty; i++) {
-        squares[i].style.borderColor = pickedColor;
-    }
-    document.querySelector("h1").style.borderColor = pickedColor;
-    message.textContent = "Correct! Play again?"
-    reset.textContent = "Choose new colours"
+    document.querySelector("h1").style.backgroundColor = pickedColor;
+    message.textContent = "Correct! Play again?";
+    reset.textContent = "Choose new colours";
+    defusal();
+    display.textContent = "Err";
 }
 
 easy.addEventListener("click", function () {
@@ -93,9 +103,58 @@ hard.addEventListener("click", function () {
     hard.style.classList.add("selected");
 })
 
-reset.addEventListener("click", function () {
-    resetGame();
+reset.addEventListener("click", resetGame);
+
+clearDisplay.addEventListener("click", resetDisplay);
+
+//this is not working correctly.
+backspace.addEventListener("click", function () {
+    if (displayContent.length > 1) {
+        displayContent.pop();
+        displayContentUpdate();
+    }
+    else {
+        displayContent.pop();
+        display.textContent = 0;
+    }
 })
 
+//LCD screen interactivity
+function displayContentUpdate() {
+    if (display.textContent.length < 8) {
+        display.textContent = displayContent.join('');
+    }
+};
+
+function resetDisplay() {
+    display.textContent = 0;
+    displayContent = [];
+}
+
+for (let i = 0; i < bombNumber.length; i++) {
+    bombNumber[i].addEventListener("click", function () {
+        displayContent.push(this.textContent);
+        displayContentUpdate();
+    })
+};
+
+//LED interaction
+function resetIdleLED() {
+    LED.classList.remove("LED-correct", "LED-incorrect");
+    LEDdetonate.classList.remove("detonate")
+    LED.classList.add("LED-idle");
+}
+
+function defusal() {
+    LED.classList.remove("LED-idle", "LED-incorrect")
+    LEDdetonate.classList.remove("detonate");
+    LED.classList.add("LED-correct");
+}
+
+function detonate() {
+    LED.classList.remove("LED-idle");
+    LED.classList.add("LED-incorrect");
+    LEDdetonate.classList.add("detonate");
+}
 
 resetGame();
