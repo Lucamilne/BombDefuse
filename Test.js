@@ -5,7 +5,7 @@ var squares = document.querySelectorAll(".wire");
 var easy = document.querySelector("#easy");
 var medium = document.querySelector("#medium");
 var hard = document.querySelector("#hard");
-var message = document.querySelector("#message");
+// var message = document.querySelector("#message");
 var pickedColorDisplay = document.querySelector("#goal");
 var bombNumber = document.querySelectorAll(".bomb-number");
 var display = document.querySelector("#calc-display");
@@ -46,7 +46,7 @@ function setDifficulty(val) {
 
 function resetGame() {
     document.querySelector("h1").style.borderColor = "";
-    message.textContent = "";
+    // message.textContent = "";
     colors = generateColors(difficulty);
     pickedColor = randomColor();
     pickedColorDisplay.textContent = pickedColor;
@@ -69,7 +69,7 @@ function newGame() {
 //h1 is not resetting correctly
 //remove h1 from js
 function correct() {
-    message.textContent = "Correct! Play again?";
+    // message.textContent = "Correct! Play again?";
     reset.textContent = "Choose new colours";
     defusal();
     display.textContent = "*********";
@@ -84,7 +84,7 @@ function check() {
     if (this.style.borderColor === pickedColor) {
         correct();
     } else {
-        message.textContent = "Please try again";
+        // message.textContent = "Please try again";
         this.style.display = "none";
         detonate();
     }

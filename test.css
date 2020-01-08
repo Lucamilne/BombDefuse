@@ -210,7 +210,7 @@ h1 {
 
 #calc-display {
   font-family: "Calculator";
-  font-size: 4em;
+  font-size: 64px;
   position: absolute;
   top: 68px;
   left: 202px;
@@ -236,8 +236,9 @@ h1 {
   left: 226px;
   display: grid;
   box-sizing: border-box;
+  border: 2px solid #202020;
   width: 270px;
-  height: 280px;
+  height: 282px;
   padding-top: 1px;
   padding-left: 25px;
   background-color: #404040;
@@ -256,13 +257,18 @@ h1 {
   z-index: 3;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 52px;
   padding-bottom: 8px;
-  padding-left: 32%;
   border-radius: 6px;
   background-color: rgb(216, 215, 194);
   box-shadow: inset 0 -8px rgba(0, 0, 0, 0.6), 0 5px 5px 5px rgba(0, 0, 0, 0.4),
     0 0 0 2px black;
+}
+
+#backspace {
+  font-size: 21px;
+  font-weight: bold;
 }
 
 .calc-base .bomb-button:hover {
@@ -336,7 +342,7 @@ button {
   margin: 2px;
   float: left;
   width: 33px;
-  height: 32px;
+  height: 31px;
   cursor: pointer;
   border-right: 3px solid #303030;
   border-bottom: 3px solid #303030;
@@ -354,22 +360,22 @@ button:focus {
 
 .circuit button:hover {
   top: 78px;
-  height: 30px;
+  height: 31px;
   border-top: 1px solid;
 }
 
 .circuit button:nth-of-type(1):hover {
   border-color: rgb(0, 150, 0);
-  background-color: rgba(0, 255, 0, 0.9);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+  background-color: rgba(0, 255, 0, 0.8);
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
   inset 0 -1px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(0, 255, 0, 0.2),
   0 0px 13px 5px rgba(0, 255, 0, 0.1), 0 0px 23px 15px rgba(0, 255, 0, 0.1);
 }
 
 .circuit button:nth-of-type(2):hover {
   border-color: rgb(150, 125, 0);
-  background-color: rgba(255, 215, 0, 0.9);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+  background-color: rgba(255, 215, 0, 0.8);
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
   inset 0 -1px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(255, 215, 0, 0.2),
   0 0px 13px 5px rgba(255, 215, 0, 0.1), 0 0px 23px 15px rgba(255, 215, 0, 0.1);
 }
@@ -377,8 +383,8 @@ button:focus {
 
 .circuit button:nth-of-type(3):hover {
   border-color: rgb(150, 0, 0);
-  background-color: rgba(255, 0, 0, 0.9);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+  background-color: rgba(255, 0, 0, 0.8);
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
   inset 0 -1px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(255, 0, 0, 0.2),
   0 0px 13px 5px rgba(255, 0, 0, 0.1), 0 0px 23px 15px rgba(255, 0, 0, 0.1);
 }
