@@ -54,7 +54,7 @@ function resetGame() {
     for (let i = 0; i < 9; i++) {
         squares[i].style.display = "none";
     }
-    newGame()
+    newGame();
     generateRainbowText(pickedColorDisplay);
 }
 
@@ -145,6 +145,7 @@ function displayContentUpdate() {
 };
 
 function resetDisplay() {
+    stopBlinkingText();
     display.textContent = 0;
     displayContent = [];
 }
@@ -157,6 +158,19 @@ for (let i = 0; i < bombNumber.length; i++) {
         displayContentUpdate();
     })
 };
+
+//can't get this to work as I intend. Must be something to do with scope. 
+
+const id = setInterval(blinkingText, 1000);
+
+function blinkingText() {
+    console.log("iterating interval")
+    display.textContent = display.textContent == "play" ? "?again" : "play";
+}
+
+function stopBlinkingText() {
+    clearInterval(id);
+}
 
 //LED interaction (need to add sounds)
 
@@ -171,16 +185,17 @@ function defusal() {
     LED.classList.remove("LED-idle", "LED-incorrect")
     LEDdetonate.classList.remove("detonate");
     LED.classList.add("LED-correct");
-    display.textContent = "88888888";
+    display.textContent = "clear";
     //make reset button flash
     document.querySelector("#reset div").classList.add("alert");
+    //LCD display blinking
 }
 
 function detonate() {
     LED.classList.remove("LED-idle");
     LED.classList.add("LED-incorrect");
     LEDdetonate.classList.add("detonate");
-    display.textContent = "error";
+    display.textContent = "armed";
 }
 
 resetGame();
