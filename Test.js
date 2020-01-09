@@ -12,7 +12,7 @@ var clearDisplay = document.querySelector("#clear");
 var backspace = document.querySelector("#backspace");
 var LED = document.querySelector(".LED");
 var LEDdetonate = document.querySelector("#detonate");
-var backgroundColor = document.querySelector("body");
+var body = document.querySelector("body");
 var displayContent = [];
 // secret difficulty?
 
@@ -55,6 +55,7 @@ function resetGame() {
     }
     newGame()
     resetIdleLED();
+    generateRainbowText(pickedColorDisplay);
 }
 
 function newGame() {
@@ -70,7 +71,6 @@ function newGame() {
 //remove h1 from js
 function correct() {
     defusal();
-    display.textContent = "defused";
     correctColor();
     //remove interactivity on game completion
     for (let i = 0; i < difficulty; i++) {
@@ -86,8 +86,6 @@ function check() {
         detonate();
     }
 };
-
-backgroundColor.style.backgroundColor = random();
 
 easy.addEventListener("click", function () {
     setDifficulty(3);
@@ -114,7 +112,6 @@ reset.addEventListener("click", resetGame);
 
 clearDisplay.addEventListener("click", resetDisplay);
 
-//this is not working correctly.
 backspace.addEventListener("click", function () {
     if (displayContent.length > 1) {
         displayContent.pop();
@@ -129,12 +126,23 @@ backspace.addEventListener("click", function () {
 // background colour functionality
 function correctColor() {
     document.querySelector("body").style.backgroundColor = pickedColor;
-    document.querySelector("body").style.transition = "background-color 4s ease";
+    document.querySelector("body").style.transition = "background-color 3s ease";
 }
+
+body.style.backgroundColor = random();
+
+// This is an experimental animated background generator
+// function dynamicBackground() {
+//     body.style.background = "linear-gradient(-45deg, " + random() + ", " + random() + ", " + random() + ", " + random() + ")";
+//     body.style.backgroundSize = "400% 400%";
+//     body.style.animation = "backgroundGradient 10s ease infinite"
+// }
+
+// dynamicBackground();
 
 //LCD screen interactivity
 function displayContentUpdate() {
-        display.textContent = displayContent.join('');
+    display.textContent = displayContent.join('');
 };
 
 function resetDisplay() {
@@ -151,7 +159,8 @@ for (let i = 0; i < bombNumber.length; i++) {
     })
 };
 
-//LED interaction
+//LED interaction (need to add sounds)
+
 function resetIdleLED() {
     LED.classList.remove("LED-correct", "LED-incorrect");
     LEDdetonate.classList.remove("detonate")
@@ -162,12 +171,27 @@ function defusal() {
     LED.classList.remove("LED-idle", "LED-incorrect")
     LEDdetonate.classList.remove("detonate");
     LED.classList.add("LED-correct");
+    display.textContent = "defused";
 }
 
 function detonate() {
     LED.classList.remove("LED-idle");
     LED.classList.add("LED-incorrect");
     LEDdetonate.classList.add("detonate");
+    display.textContent = "error";
 }
 
 resetGame();
+
+//rainbow text
+
+function generateRainbowText(element) {
+    var text = element.innerText;
+    element.innerHTML = "";
+    for (let i = 0; i < text.length; i++) {
+        let charElem = document.createElement("span");
+        charElem.style.color = "hsl(" + (360 * i / text.length) + ",80%,50%)";
+        charElem.innerHTML = text[i];
+        element.appendChild(charElem);
+    }
+}
