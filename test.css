@@ -204,7 +204,7 @@ h1 {
   left: 202px;
 
   display: flex;
-  align-items: center;
+  line-height: 51px;
   justify-content: right;
   text-align: center;
   box-sizing: border-box;
