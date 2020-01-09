@@ -5,6 +5,7 @@ var squares = document.querySelectorAll(".wire");
 var easy = document.querySelector("#easy");
 var medium = document.querySelector("#medium");
 var hard = document.querySelector("#hard");
+var reset = document.querySelector("#reset");
 var pickedColorDisplay = document.querySelector("#goal");
 var bombNumber = document.querySelectorAll(".bomb-number");
 var display = document.querySelector("#calc-display");
@@ -54,7 +55,6 @@ function resetGame() {
         squares[i].style.display = "none";
     }
     newGame()
-    resetIdleLED();
     generateRainbowText(pickedColorDisplay);
 }
 
@@ -65,13 +65,13 @@ function newGame() {
         squares[i].addEventListener("click", check)
     }
     resetDisplay();
+    resetIdleLED();
 };
 
-//h1 is not resetting correctly
 //remove h1 from js
 function correct() {
     defusal();
-    correctColor();
+    pickedBackgroundColor();
     //remove interactivity on game completion
     for (let i = 0; i < difficulty; i++) {
         squares[i].removeEventListener("click", check)
@@ -124,9 +124,8 @@ backspace.addEventListener("click", function () {
 })
 
 // background colour functionality
-function correctColor() {
+function pickedBackgroundColor() {
     document.querySelector("body").style.backgroundColor = pickedColor;
-    document.querySelector("body").style.transition = "background-color 3s ease";
 }
 
 body.style.backgroundColor = random();
@@ -165,13 +164,16 @@ function resetIdleLED() {
     LED.classList.remove("LED-correct", "LED-incorrect");
     LEDdetonate.classList.remove("detonate")
     LED.classList.add("LED-idle");
+    document.querySelector("#reset div").classList.remove("alert");
 }
 
 function defusal() {
     LED.classList.remove("LED-idle", "LED-incorrect")
     LEDdetonate.classList.remove("detonate");
     LED.classList.add("LED-correct");
-    display.textContent = "defused";
+    display.textContent = "88888888";
+    //make reset button flash
+    document.querySelector("#reset div").classList.add("alert");
 }
 
 function detonate() {
