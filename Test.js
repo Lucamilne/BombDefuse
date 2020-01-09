@@ -1,11 +1,10 @@
-var difficulty = 6;
+var difficulty = 3;
 var colors = generateColors(difficulty);
 var pickedColor = randomColor();
 var squares = document.querySelectorAll(".wire");
 var easy = document.querySelector("#easy");
 var medium = document.querySelector("#medium");
 var hard = document.querySelector("#hard");
-// var message = document.querySelector("#message");
 var pickedColorDisplay = document.querySelector("#goal");
 var bombNumber = document.querySelectorAll(".bomb-number");
 var display = document.querySelector("#calc-display");
@@ -13,6 +12,7 @@ var clearDisplay = document.querySelector("#clear");
 var backspace = document.querySelector("#backspace");
 var LED = document.querySelector(".LED");
 var LEDdetonate = document.querySelector("#detonate");
+var backgroundColor = document.querySelector("body");
 var displayContent = [];
 // secret difficulty?
 
@@ -69,10 +69,8 @@ function newGame() {
 //h1 is not resetting correctly
 //remove h1 from js
 function correct() {
-    // message.textContent = "Correct! Play again?";
-    reset.textContent = "Choose new colours";
     defusal();
-    display.textContent = "*********";
+    display.textContent = "defused";
     correctColor();
     //remove interactivity on game completion
     for (let i = 0; i < difficulty; i++) {
@@ -84,11 +82,12 @@ function check() {
     if (this.style.borderColor === pickedColor) {
         correct();
     } else {
-        // message.textContent = "Please try again";
         this.style.display = "none";
         detonate();
     }
 };
+
+backgroundColor.style.backgroundColor = random();
 
 easy.addEventListener("click", function () {
     setDifficulty(3);

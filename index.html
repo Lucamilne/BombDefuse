@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=800, initial-scale=0.5">
+    <!-- content="width=device-width, initial-scale=1.0" -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bomb Defusal RGB Game</title>
     <link rel="stylesheet" type="text/css" href="test.css">
@@ -13,12 +14,7 @@
 </head>
 
 <body>
-    <h1>Cut the <span id="goal"></span> wire on the bomb!</h1>
-    <!-- <button id="easy">easy</button>
-        <button id="medium" class="selected">medium</button>
-        <button id="hard">hard</button> -->
-    <!-- <span id="message"></span> -->
-    <button id="reset">reset</button>
+    <h1>Cut the <span id="goal"></span> wire atop the bomb!</h1>
     <main class="container">
         <div class="wire" id="wire1"></div>
         <div class="wire" id="wire2"></div>
@@ -37,13 +33,13 @@
         <div class="bomb c4-2"></div>
         <div class="bomb c4-3"></div>
         <nav class="circuit">
-            <button id="easy"></button>
-            <button class="selected" id="medium"></button>
-            <button id="hard"></button>
+            <button id="easy" title="Easy difficulty"></button>
+            <button id="medium" title="Normal difficulty"></button>
+            <button id="hard" title="Hard diffuclty"></button>
             <div id="blockwire"></div>
+            <button id="reset" title="Reset game">R</button>
         </nav>
         <div class="tape"></div>
-        <div class="blockwire2"></div>
         <div class="keypad-wires"></div>
         <div class="calc-base">
             <li class="bomb-button bomb-number">1</li>
@@ -59,7 +55,6 @@
             <li class="bomb-button bomb-number">0</li>
             <li class="bomb-button" id="clear">C</li>
         </div>
-        <!-- <div class="blockwire"></div> -->
         <div id="calc-display"></div>
     </main>
     <script type="text/javascript" src="Test.js"></script>

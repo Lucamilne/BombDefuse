@@ -6,23 +6,30 @@
 body {
   margin: 0;
 
-  background-color: #909090;
+  /* background-color: #909090;
+  color: #fff;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+  animation: backgroundGradient 10s ease infinite; */
 }
+
+/* @keyframes backgroundGradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+} */
 
 .bar {
   height: 40px;
   padding-left: 5%;
 
   background-color: white;
-}
-
-button {
-  font-family: monospace;
-  height: 40px;
-  text-transform: uppercase;
-  color: black;
-  border: none;
-  background-color: transparent;
 }
 
 h1 {
@@ -32,7 +39,9 @@ h1 {
   margin: 0 auto;
   text-align: center;
   text-transform: uppercase;
-  color: white;
+  color: black;
+  background-color: white;
+  border-bottom: 3px solid black;
 }
 
 #reset {
@@ -337,16 +346,18 @@ h1 {
 button {
   position: relative;
   z-index: 2;
-  top: 76px;
-  left: 10px;
+  top: 78px;
+  left: 15px;
   margin: 2px;
   float: left;
   width: 33px;
   height: 31px;
+  padding-bottom: 5px;
   cursor: pointer;
   border-right: 3px solid #303030;
   border-bottom: 3px solid #303030;
   border-left: 3px solid #303030;
+  border-top: 0;
   border-radius: 50%;
   background-color: #606060;
   box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.7),
@@ -361,10 +372,15 @@ button:focus {
 .circuit button:hover {
   top: 78px;
   height: 31px;
-  border-top: 1px solid;
+  border-top: 1px solid #303030;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
+  inset 0 -2px 0 0 rgba(0, 0, 0, 0.3), 0 4px 3px rgba(0, 0, 0, 0.3),
+  0 8px 13px 5px rgba(0, 0, 0, 0.2), 0 18px 23px 15px rgba(0, 0, 0, 0.1);
 }
 
-.circuit button:nth-of-type(1):hover {
+/* illuminated buttons */
+
+/* .circuit button:nth-of-type(1):hover {
   border-color: rgb(0, 150, 0);
   background-color: rgba(0, 255, 0, 0.8);
   box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
@@ -376,23 +392,33 @@ button:focus {
   border-color: rgb(150, 125, 0);
   background-color: rgba(255, 215, 0, 0.8);
   box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
-  inset 0 -1px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(255, 215, 0, 0.2),
+  inset 0 -2px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(255, 215, 0, 0.2),
   0 0px 13px 5px rgba(255, 215, 0, 0.1), 0 0px 23px 15px rgba(255, 215, 0, 0.1);
-}
+} */
 
-
-.circuit button:nth-of-type(3):hover {
+/* .circuit button:nth-of-type(3) {
   border-color: rgb(150, 0, 0);
   background-color: rgba(255, 0, 0, 0.8);
   box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
-  inset 0 -1px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(255, 0, 0, 0.2),
+  inset 0 -2px 0 0 rgba(0, 0, 0, 0.3), 0 0px 3px 2px rgba(255, 0, 0, 0.2),
   0 0px 13px 5px rgba(255, 0, 0, 0.1), 0 0px 23px 15px rgba(255, 0, 0, 0.1);
+} */
+
+.circuit button:nth-of-type(4) {
+  position: relative;
+  left: 15px;
+  background-color: red;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
 
 #blockwire {
   position: absolute;
   top: -20px;
-  left: 200px;
+  left: 165px;
   height: 150px;
   width:50px;
   background: repeating-linear-gradient(90deg, transparent, #303030 1px, #101010 9px, transparent 10px);
