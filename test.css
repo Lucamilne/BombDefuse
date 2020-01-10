@@ -48,7 +48,7 @@ body {
 h1 {
   opacity: 0;
   font-family: monospace;
-  font-size: 2.5em;
+  font-size: 3vw;
   letter-spacing: 2px;
   text-align: center;
   text-transform: uppercase;
@@ -213,7 +213,7 @@ h1 {
 
 .circuit::before {
   position: absolute;
-  top: -130px;
+  top: -120px;
   left: -35px;
   width: 370px;
   height: 125px;
@@ -248,13 +248,15 @@ h1 {
   font-family: "Calculator";
   font-size: 64px;
   position: absolute;
-  top: 55px;
+  top: 65px;
   left: 202px;
 
   overflow: hidden;
   width: 296px;
   height: 51px;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
+  display: flex;
+  align-items: center;
   letter-spacing: 6px;
   direction: rtl;
   border: 12px solid #202020;
