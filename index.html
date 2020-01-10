@@ -7,14 +7,22 @@
     <!-- content="width=device-width, initial-scale=1.0" -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bomb Defusal RGB Game</title>
-    <link rel="stylesheet" type="text/css" href="test.css">
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- snippet of CSS to avoid FoUC -->
+    <style>
+        html {
+            visibility: hidden;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="test.css">
 </head>
 
 <body>
-    <h1>Cut the <span class="rainbowText" id="goal"></span> wire atop the bomb!</h1>
+    <div id="wrapper">
+        <h1>Cut the <span class="rainbowText" id="goal"></span> wire atop the bomb!</h1>
+    </div>
     <main class="container">
         <div class="wire" id="wire1"></div>
         <div class="wire" id="wire2"></div>

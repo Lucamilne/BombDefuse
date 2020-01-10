@@ -55,7 +55,6 @@ function resetGame() {
         squares[i].style.display = "none";
     }
     newGame();
-    generateRainbowText(pickedColorDisplay);
 }
 
 function newGame() {
@@ -66,6 +65,7 @@ function newGame() {
     }
     resetDisplay();
     resetIdleLED();
+    generateRainbowText(pickedColorDisplay);
 };
 
 //remove h1 from js
@@ -177,7 +177,7 @@ function defusal() {
     //make reset button flash
     document.querySelector("#reset div").classList.add("alert");
     //LCD display blinking
-    id = setInterval(blinkingText, 1000);
+    id = setInterval(blinkingText, 1200);
 }
 
 function detonate() {
@@ -187,7 +187,7 @@ function detonate() {
     display.textContent = "armed";
 }
 
-resetGame();
+window.onload = resetGame();
 
 //rainbow text
 
@@ -201,3 +201,4 @@ function generateRainbowText(element) {
         element.appendChild(charElem);
     }
 }
+
