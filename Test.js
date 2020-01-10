@@ -89,23 +89,14 @@ function check() {
 
 easy.addEventListener("click", function () {
     setDifficulty(3);
-    easy.style.classList.add("selected");
-    medium.style.classList.remove("selected");
-    hard.style.classList.remove("selected");
 })
 
 medium.addEventListener("click", function () {
     setDifficulty(6);
-    easy.style.classList.remove("selected");
-    medium.style.classList.add("selected");
-    hard.style.classList.remove("selected");
 })
 
 hard.addEventListener("click", function () {
     setDifficulty(9);
-    easy.style.classList.remove("selected");
-    medium.style.classList.remove("selected");
-    hard.style.classList.add("selected");
 })
 
 reset.addEventListener("click", resetGame);
@@ -130,7 +121,7 @@ function pickedBackgroundColor() {
 
 body.style.backgroundColor = random();
 
-// This is an experimental animated background generator
+// This is an animated background generator
 // function dynamicBackground() {
 //     body.style.background = "linear-gradient(-45deg, " + random() + ", " + random() + ", " + random() + ", " + random() + ")";
 //     body.style.backgroundSize = "400% 400%";
@@ -159,12 +150,9 @@ for (let i = 0; i < bombNumber.length; i++) {
     })
 };
 
-//can't get this to work as I intend. Must be something to do with scope. 
-
-const id = setInterval(blinkingText, 1000);
+var id;
 
 function blinkingText() {
-    console.log("iterating interval")
     display.textContent = display.textContent == "play" ? "?again" : "play";
 }
 
@@ -189,6 +177,7 @@ function defusal() {
     //make reset button flash
     document.querySelector("#reset div").classList.add("alert");
     //LCD display blinking
+    id = setInterval(blinkingText, 1000);
 }
 
 function detonate() {
