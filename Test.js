@@ -14,10 +14,12 @@ var backspace = document.querySelector("#backspace");
 var LED = document.querySelector(".LED");
 var LEDdetonate = document.querySelector("#detonate");
 var body = document.querySelector("body");
+var help = document.querySelector(".help");
+var tooltip = document.querySelector("p");
 var displayContent = [];
 // secret difficulty?
 
-//color this 
+//color generators 
 function random() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
@@ -38,6 +40,7 @@ function randomColor() {
     return colors[randIndexOfColors];
 }
 
+//generic game functions
 function setDifficulty(val) {
     if (difficulty !== val) {
         difficulty = val;
@@ -47,7 +50,6 @@ function setDifficulty(val) {
 
 function resetGame() {
     document.querySelector("h1").style.borderColor = "";
-    // message.textContent = "";
     colors = generateColors(difficulty);
     pickedColor = randomColor();
     pickedColorDisplay.textContent = pickedColor;
@@ -68,7 +70,6 @@ function newGame() {
     generateRainbowText(pickedColorDisplay);
 };
 
-//remove h1 from js
 function correct() {
     defusal();
     pickedBackgroundColor();
@@ -76,6 +77,7 @@ function correct() {
     for (let i = 0; i < difficulty; i++) {
         squares[i].removeEventListener("click", check)
     }
+    //expand on this.
 }
 
 function check() {
@@ -86,6 +88,16 @@ function check() {
         detonate();
     }
 };
+
+//event listeners
+
+help.addEventListener("mouseover", function() {
+    tooltip.style.display = "block";
+});
+
+help.addEventListener("mouseout", function() {
+    tooltip.style.display = "none";
+})
 
 easy.addEventListener("click", function () {
     setDifficulty(3);
@@ -115,22 +127,17 @@ backspace.addEventListener("click", function () {
 })
 
 // background colour functionality
+
 function pickedBackgroundColor() {
     document.querySelector("body").style.backgroundColor = pickedColor;
 }
 
 body.style.backgroundColor = random();
 
-// This is an animated background generator
-// function dynamicBackground() {
-//     body.style.background = "linear-gradient(-45deg, " + random() + ", " + random() + ", " + random() + ", " + random() + ")";
-//     body.style.backgroundSize = "400% 400%";
-//     body.style.animation = "backgroundGradient 10s ease infinite"
-// }
-
-// dynamicBackground();
+help.style.backgroundColor = random();
 
 //LCD screen interactivity
+
 function displayContentUpdate() {
     display.textContent = displayContent.join('');
 };
@@ -160,7 +167,7 @@ function stopBlinkingText() {
     clearInterval(id);
 }
 
-//LED interaction (need to add sounds)
+//LED interaction
 
 function resetIdleLED() {
     LED.classList.remove("LED-correct", "LED-incorrect");
@@ -168,6 +175,8 @@ function resetIdleLED() {
     LED.classList.add("LED-idle");
     document.querySelector("#reset div").classList.remove("alert");
 }
+
+//game states
 
 function defusal() {
     LED.classList.remove("LED-idle", "LED-incorrect")
@@ -187,7 +196,14 @@ function detonate() {
     display.textContent = "armed";
 }
 
+//run on startup
+
+setTimeout(function() {
+    help.style.pointerEvents = "auto";
+}, 4000);
+
 window.onload = resetGame();
+window.onLoad = body.style.transition = "4s ease";
 
 //rainbow text
 
