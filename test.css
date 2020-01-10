@@ -165,7 +165,7 @@ h1 {
 
 .circuit::before {
   position: absolute;
-  top: -115px;
+  top: -130px;
   left: -35px;
   width: 370px;
   height: 125px;
@@ -200,7 +200,7 @@ h1 {
   font-family: "Calculator";
   font-size: 64px;
   position: absolute;
-  top: 68px;
+  top: 55px;
   left: 202px;
 
   overflow: hidden;
@@ -329,7 +329,7 @@ h1 {
   height: 31px;
   padding-bottom: 5px;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.7);
   font-family: sans-serif;
   font-size: 14px;
   font-weight: 600;
