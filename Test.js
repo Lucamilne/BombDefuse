@@ -200,7 +200,7 @@ function detonate() {
 
 setTimeout(function() {
     help.style.pointerEvents = "auto";
-}, 4000);
+}, 3000);
 
 window.onload = resetGame();
 window.onLoad = body.style.transition = "4s ease";
