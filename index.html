@@ -7,9 +7,10 @@
     <!-- content="width=device-width, initial-scale=1.0" -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bomb Defusal RGB Game</title>
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- jQuery for UI plugin-->
+    <script type="text/javascript" src="./libs/jquery-3.4.1.min.js"></script>
+    <!-- jQueryUI for animation effects -->
+    <script type="text/javascript" src="./libs/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <!-- snippet of CSS to avoid FoUC -->
     <style>
         html {
@@ -31,11 +32,6 @@
         <br>
         Each parameter (<span>red</span>, <span>green</span>, and <span>blue</span>) defines the intensity of the color
         as an integer between 0 and 255.
-        <!-- <br>
-        <br>
-        For example, <span>R</span><span>G</span><span>B</span>(<span>0</span>, <span>0</span>, <span>255</span>) is
-        rendered as blue, because the blue
-        parameter is set to its highest value (255) and the others are set to 0. -->
         <br>
         <br>
         You can reset the game, or choose new colours at any time by pressing the
@@ -58,7 +54,7 @@
         <div class="wire" id="wire9"></div>
         <div class="receiver">
             <div class="LED"></div>
-            <div id="detonate"></div>
+            <div id="armed"></div>
         </div>
         <div class="bomb c4-1"></div>
         <div class="bomb c4-2"></div>

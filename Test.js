@@ -12,7 +12,7 @@ var display = document.querySelector("#calc-display");
 var clearDisplay = document.querySelector("#clear");
 var backspace = document.querySelector("#backspace");
 var LED = document.querySelector(".LED");
-var LEDdetonate = document.querySelector("#detonate");
+var LEDdetonate = document.querySelector("#armed");
 var body = document.querySelector("body");
 var help = document.querySelector(".help");
 var tooltip = document.querySelector("p");
@@ -85,17 +85,17 @@ function check() {
         correct();
     } else {
         this.style.display = "none";
-        detonate();
+        armed();
     }
 };
 
 //event listeners
 
-help.addEventListener("mouseover", function() {
+help.addEventListener("mouseover", function () {
     tooltip.style.display = "block";
 });
 
-help.addEventListener("mouseout", function() {
+help.addEventListener("mouseout", function () {
     tooltip.style.display = "none";
 })
 
@@ -160,7 +160,7 @@ for (let i = 0; i < bombNumber.length; i++) {
 var id;
 
 function blinkingText() {
-    display.textContent = display.textContent == "play" ? "?again" : "play";
+    display.textContent = display.textContent == "press" ? "play" : "press";
 }
 
 function stopBlinkingText() {
@@ -171,7 +171,7 @@ function stopBlinkingText() {
 
 function resetIdleLED() {
     LED.classList.remove("LED-correct", "LED-incorrect");
-    LEDdetonate.classList.remove("detonate")
+    LEDdetonate.classList.remove("armed")
     LED.classList.add("LED-idle");
     document.querySelector("#reset div").classList.remove("alert");
 }
@@ -180,9 +180,9 @@ function resetIdleLED() {
 
 function defusal() {
     LED.classList.remove("LED-idle", "LED-incorrect")
-    LEDdetonate.classList.remove("detonate");
+    LEDdetonate.classList.remove("armed");
     LED.classList.add("LED-correct");
-    display.textContent = "clear";
+    display.textContent = "defused";
     //make reset button flash
     document.querySelector("#reset div").classList.add("alert");
     //LCD display blinking
@@ -192,13 +192,51 @@ function defusal() {
 function detonate() {
     LED.classList.remove("LED-idle");
     LED.classList.add("LED-incorrect");
-    LEDdetonate.classList.add("detonate");
-    display.textContent = "armed";
+    LEDdetonate.classList.add("armed");
 }
+
+// experimental armed function
+let myTimeoutID;
+
+function armed() {
+    LED.classList.remove("LED-idle");
+    LED.classList.add("LED-incorrect");
+    LEDdetonate.classList.add("armed");
+    display.textContent = "armed";
+    myTimeoutID = setTimeout(function() {
+        timer();
+    }, 1000)
+}
+
+function timedFunctionClear() {
+    clearTimeout(myTimeoutID);
+}
+
+function timer() {
+    var second = difficulty + 1;
+    var decisecond = 0;
+    var centisecond = 0;
+    display.textContent = "armed";
+    var timer = setInterval(function () {
+        display.textContent = '0' + second + ":" + decisecond + centisecond;
+        centisecond--;
+        if (centisecond < 0) {
+            centisecond = 9;
+            decisecond--;
+            if (decisecond < 0) {
+                decisecond = 9
+                second--;
+                if (second < 0) {
+                    clearInterval(timer);
+                }
+            }
+        }
+    }, 10);
+};
 
 //run on startup
 
-setTimeout(function() {
+setTimeout(function () {
     help.style.pointerEvents = "auto";
 }, 3000);
 
@@ -218,3 +256,8 @@ function generateRainbowText(element) {
     }
 }
 
+//experimental detonate features --jQuery starts here
+
+// $( document ).click(function() {
+//     $( ".container" ).toggle("explode", {pieces: 8}, 1500 );
+// });

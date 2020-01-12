@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Calculator";
-  src: url("digital-7.ttf");
+  src: url("LCDAT&TPhoneTimeDate.ttf");
 }
 
 html {
@@ -138,7 +138,7 @@ p {
   height: auto;
   padding: 20px;
   font-family: monospace;
-  font-size: 3vw;
+  font-size: 2.5vh;
   border: 3px solid black;
   box-shadow: 
     0 4px 3px rgba(0, 0, 0, 0.4),
@@ -223,7 +223,7 @@ p span:nth-of-type(3n+2) {
   box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.3);
 }
 
-.detonate {
+.armed {
   position: absolute;
   top: 12px;
   left: 36px;
@@ -323,17 +323,18 @@ p span:nth-of-type(3n+2) {
 #calc-display {
   font-family: "Calculator";
   font-size: 64px;
+  /* font-variant-numeric: tabular-nums; */
   position: absolute;
-  top: 65px;
-  left: 202px;
+  top: 62px;
+  left: 204px;
 
   overflow: hidden;
   width: 296px;
-  height: 51px;
+  height: 56px;
   display: flex;
-  /* align-items: center; */
-  line-height: 51px;
-  letter-spacing: 6px;
+  /* align-items: center; lineheigh: 51 */
+  line-height: 59px;
+  letter-spacing: 7.5px;
   direction: rtl;
   border: 12px solid #202020;
   border-radius: 1px;
