@@ -343,6 +343,12 @@ p span:nth-of-type(3n+2) {
     0 5px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
+#calc-display::after {
+  content: "88888888";
+  position: absolute;
+  color: rgba(0, 0, 0, 0.1);
+}
+
 .calc-base {
   position: absolute;
   top: 293px;
