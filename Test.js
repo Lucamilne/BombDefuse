@@ -7,15 +7,17 @@ var medium = document.querySelector("#medium");
 var hard = document.querySelector("#hard");
 var reset = document.querySelector("#reset");
 var pickedColorDisplay = document.querySelector("#goal");
+var bombButton = document.querySelectorAll(".bomb-button");
 var bombNumber = document.querySelectorAll(".bomb-number");
 var display = document.querySelector("#calc-display");
 var clearDisplay = document.querySelector("#clear");
 var backspace = document.querySelector("#backspace");
 var LED = document.querySelector(".LED");
-var LEDdetonate = document.querySelector("#armed");
+var LEDarmed = document.querySelector("#armed");
 var body = document.querySelector("body");
 var help = document.querySelector(".help");
 var tooltip = document.querySelector("p");
+var farewell = ["goodbye", "ciao", "gd gosh", "bye", "ouch", "bang", "tally ho", "oof", "oh jeez"]
 var displayContent = [];
 // secret difficulty?
 
@@ -49,13 +51,14 @@ function setDifficulty(val) {
 }
 
 function resetGame() {
-    document.querySelector("h1").style.borderColor = "";
     colors = generateColors(difficulty);
     pickedColor = randomColor();
     pickedColorDisplay.textContent = pickedColor;
     for (let i = 0; i < 9; i++) {
         squares[i].style.display = "none";
     }
+    resetDisplay();
+    resetIdleLED();
     newGame();
 }
 
@@ -65,8 +68,7 @@ function newGame() {
         squares[i].style.borderColor = colors[i];
         squares[i].addEventListener("click", check)
     }
-    resetDisplay();
-    resetIdleLED();
+    enableButtons();
     generateRainbowText(pickedColorDisplay);
 };
 
@@ -77,19 +79,19 @@ function correct() {
     for (let i = 0; i < difficulty; i++) {
         squares[i].removeEventListener("click", check)
     }
-    //expand on this.
 }
 
 function check() {
+    disableButtons();
+    this.style.display = "none";
     if (this.style.borderColor === pickedColor) {
         correct();
     } else {
-        this.style.display = "none";
         armed();
     }
 };
 
-//event listeners
+//static event listeners
 
 help.addEventListener("mouseover", function () {
     tooltip.style.display = "block";
@@ -113,19 +115,6 @@ hard.addEventListener("click", function () {
 
 reset.addEventListener("click", resetGame);
 
-clearDisplay.addEventListener("click", resetDisplay);
-
-backspace.addEventListener("click", function () {
-    if (displayContent.length > 1) {
-        displayContent.pop();
-        displayContentUpdate();
-    }
-    else {
-        displayContent.pop();
-        display.textContent = 0;
-    }
-})
-
 // background colour functionality
 
 function pickedBackgroundColor() {
@@ -148,14 +137,43 @@ function resetDisplay() {
     displayContent = [];
 }
 
-for (let i = 0; i < bombNumber.length; i++) {
-    bombNumber[i].addEventListener("click", function () {
-        if (display.textContent.length < 8) {
-            displayContent.push(this.textContent);
-        }
-        displayContentUpdate();
-    })
+//bomb keypad button interactivity
+
+function enableButtons() {
+    for (let i = 0; i < bombNumber.length; i++) {
+        bombNumber[i].addEventListener("click", numButton);
+    };
+    clearDisplay.addEventListener("click", resetDisplay);
+    backspace.addEventListener("click", backspaceButton);
 };
+
+function disableButtons() {
+    for (let i = 0; i < bombButton.length; i++) {
+        bombButton[i].removeEventListener("click", numButton);
+    };
+    clearDisplay.removeEventListener("click", resetDisplay);
+    backspace.removeEventListener("click", backspaceButton);
+};
+
+function numButton() {
+    if (display.textContent.length < 8) {
+        displayContent.push(this.textContent);
+    }
+    displayContentUpdate();
+};
+
+function backspaceButton() {
+    if (displayContent.length > 1) {
+        displayContent.pop();
+        displayContentUpdate();
+    }
+    else {
+        displayContent.pop();
+        display.textContent = 0;
+    }
+};
+
+//LCD dynamic text
 
 var id;
 
@@ -171,7 +189,7 @@ function stopBlinkingText() {
 
 function resetIdleLED() {
     LED.classList.remove("LED-correct", "LED-incorrect");
-    LEDdetonate.classList.remove("armed")
+    LEDarmed.classList.remove("armed")
     LED.classList.add("LED-idle");
     document.querySelector("#reset div").classList.remove("alert");
 }
@@ -180,45 +198,71 @@ function resetIdleLED() {
 
 function defusal() {
     LED.classList.remove("LED-idle", "LED-incorrect")
-    LEDdetonate.classList.remove("armed");
+    LEDarmed.classList.remove("armed");
     LED.classList.add("LED-correct");
+    //disables countdown and detonation
+    timedFunctionClear();
     display.textContent = "defused";
     //make reset button flash
     document.querySelector("#reset div").classList.add("alert");
-    //LCD display blinking
+    //LCD display text
     id = setInterval(blinkingText, 1200);
 }
 
-function detonate() {
-    LED.classList.remove("LED-idle");
-    LED.classList.add("LED-incorrect");
-    LEDdetonate.classList.add("armed");
-}
-
-// experimental armed function
 let myTimeoutID;
 
 function armed() {
     LED.classList.remove("LED-idle");
     LED.classList.add("LED-incorrect");
-    LEDdetonate.classList.add("armed");
-    display.textContent = "armed";
-// This cannot remain here - it's creating new instances on every wrong guess
-    myTimeoutID = setTimeout(function() {
-        timer();
-    }, 1000)
+    LEDarmed.classList.add("armed");
+    display.textContent = "error";
+    //grace period before countdown begins
+    myTimeoutID = setTimeout(timer, 1000)
+    //replace check with detonateCheck
+    for (let i = 0; i < difficulty; i++) {
+        squares[i].removeEventListener("click", check);        
+        squares[i].addEventListener("click", finalCheck);        
+    }
 }
+
+function finalCheck() {
+    this.style.display = "none";
+    if (this.style.borderColor === pickedColor) {
+        correct();
+    } else {
+        timedFunctionClear();
+        //display random message (easter egg)
+        display.textContent = farewell[Math.floor(Math.random()*farewell.length)];
+        explode();
+    }
+    //remove finalCheck 
+    for (let i = 0; i < difficulty; i++) {
+        squares[i].removeEventListener("click", finalCheck);        
+    }
+};
+
+function explode() {
+    // --jQuery used for animation effects
+    $(".container").effect("explode", { pieces: 9 }, 1500);
+};
+
+//countdown timers
+
+let myCountdownID;
 
 function timedFunctionClear() {
     clearTimeout(myTimeoutID);
+    clearInterval(myCountdownID);
 }
 
 function timer() {
-    var second = difficulty + 1;
-    var decisecond = 0;
-    var centisecond = 0;
-    
-    var timer = setInterval(function () {
+    //once this is triggered, disable armed(), call detonate()
+
+    let second = difficulty;
+    let decisecond = 0;
+    let centisecond = 0;
+
+    myCountdownID = setInterval(function () {
         display.textContent = '0' + second + ":" + decisecond + centisecond;
         centisecond--;
         if (centisecond < 0) {
@@ -228,7 +272,8 @@ function timer() {
                 decisecond = 9
                 second--;
                 if (second < 0) {
-                    clearInterval(timer);
+                    clearInterval(myCountdownID);
+                    explode();
                 }
             }
         }
@@ -255,10 +300,4 @@ function generateRainbowText(element) {
         charElem.innerHTML = text[i];
         element.appendChild(charElem);
     }
-}
-
-//experimental detonate features --jQuery starts here
-
-// $( document ).click(function() {
-//     $( ".container" ).toggle("explode", {pieces: 8}, 1500 );
-// });
+};

@@ -9,7 +9,6 @@ html {
 
 body {
   margin: 0;
-  /* transition: 4s ease; */
 }
 
 @keyframes backgroundGradient {
@@ -127,6 +126,7 @@ h1 {
 p {
   position: fixed;
   display: none;
+  top: 25%;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -162,7 +162,7 @@ p span:nth-of-type(3n+2) {
   width: 660px;
   height: 800px;
   margin: 0 auto;
-  margin-top: 210px;
+  top: 210px;
   margin-bottom: 50px;
 }
 
@@ -332,8 +332,8 @@ p span:nth-of-type(3n+2) {
   width: 296px;
   height: 56px;
   display: flex;
-  /* align-items: center; lineheigh: 51 */
-  line-height: 59px;
+  align-items: center;
+  /* line-height: 59px; */
   letter-spacing: 7.5px;
   direction: rtl;
   border: 12px solid #202020;
