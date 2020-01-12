@@ -244,6 +244,15 @@ function finalCheck() {
 function explode() {
     // --jQuery used for animation effects
     $(".container").effect("explode", { pieces: 9 }, 1500);
+    $("#wrapper").slideUp();
+    $(".help").fadeOut();
+    //ditch this for Game Over screen
+    setTimeout(refresh, 2000);
+};
+
+//ditch this
+function refresh() {
+    location.reload();
 };
 
 //countdown timers
