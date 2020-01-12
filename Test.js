@@ -203,6 +203,7 @@ function armed() {
     LED.classList.add("LED-incorrect");
     LEDdetonate.classList.add("armed");
     display.textContent = "armed";
+// This cannot remain here - it's creating new instances on every wrong guess
     myTimeoutID = setTimeout(function() {
         timer();
     }, 1000)
@@ -216,7 +217,7 @@ function timer() {
     var second = difficulty + 1;
     var decisecond = 0;
     var centisecond = 0;
-    display.textContent = "armed";
+    
     var timer = setInterval(function () {
         display.textContent = '0' + second + ":" + decisecond + centisecond;
         centisecond--;
