@@ -1,4 +1,4 @@
-var difficulty = 3;
+var difficulty = 6;
 var colors = generateColors(difficulty);
 var pickedColor = randomColor();
 var squares = document.querySelectorAll(".wire");
