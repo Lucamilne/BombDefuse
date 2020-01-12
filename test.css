@@ -45,6 +45,7 @@ body {
 }
 
 h1 {
+  position: relative;
   opacity: 0;
   font-family: monospace;
   font-size: 3vw;
@@ -126,7 +127,7 @@ h1 {
 p {
   position: fixed;
   display: none;
-  top: 25%;
+  top: 15%;
   left: 0;
   right: 0;
   margin-left: auto;
