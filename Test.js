@@ -59,6 +59,7 @@ function resetGame() {
     }
     resetDisplay();
     resetIdleLED();
+    timedFunctionClear()
     newGame();
 }
 
