@@ -1,16 +1,13 @@
 # BombDefuse
 
-The Bomb Defusal RGB Game is my unique interpretation of the RGB color game, a static web app rite of passage. It's primary purpose is to show a more advanced understanding of CSS and Javascript than is typically required to make the original base game.
+The Bomb Defusal RGB Game is a unique interpretation of the RGB color game, a static web app rite of passage. It's primary purpose is to show a more advanced understanding of CSS and Javascript than is typically required to make the original base game. The game has been written in standard javascript with use of jQuery UI for the explode animation.
 
-You must click on the correct wire as described by the header e.g. Cut the RGB(255, 255, 255) wire!
-
-Each parameter (red, green, and blue) defines the intensity of the color as an integer between 0 and 255.
-
-For example, rgb(0, 0, 255) is rendered as blue, because the blue parameter is set to its highest value (255) and the others are set to 0.
 
 Some additional features that I've added that isn't typical of the standard RGB color game:
 
 -Interactivity with the squares (or in this case, wires) is limited once the correct wire is picked.
+
+- two fail conditions added, a countdown and a lifeline system. Failure to pick the right wire in time, or too many incorrect guesses will cause the bomb to explode. 
 
 -LED light indicates 3 states of the bomb, idle, detonation sequence initiated and defused. 
 
@@ -23,8 +20,3 @@ Some additional features that I've added that isn't typical of the standard RGB 
 -removed most of the Interface replacing it with interactive parts to the bomb and visual feedback to guide players.
 
 -Dynamic backgrounds and rainbow text.
-
-
-EULA
--==-
-The fonts Digital-7 is freeware for home using.
