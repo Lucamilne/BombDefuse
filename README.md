@@ -20,3 +20,5 @@ Some additional features that I've added that isn't typical of the standard RGB 
 - removed most of the Interface replacing it with interactive parts to the bomb and visual feedback to guide players.
 
 - Dynamic backgrounds and rainbow text.
+
+- a Game Over screen
