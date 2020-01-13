@@ -216,7 +216,7 @@ function armed() {
     LED.classList.remove("LED-idle");
     LED.classList.add("LED-incorrect");
     LEDarmed.classList.add("armed");
-    display.textContent = "error";
+    display.textContent = "false";
     //grace period before countdown begins
     myTimeoutID = setTimeout(timer, 1000)
     //replace check with detonateCheck
