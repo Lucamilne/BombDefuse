@@ -1,6 +1,19 @@
 @font-face {
+  font-family: "gameover";
+  src: url("Gameplay.ttf");
+}
+
+@font-face {
   font-family: "Calculator";
   src: url("LCDAT&TPhoneTimeDate.ttf");
+}
+
+:root {
+  --text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+  --box-shadow: 
+    0 4px 3px rgba(0, 0, 0, 0.4),
+    0 8px 13px 5px rgba(0, 0, 0, 0.3), 
+    0 18px 23px 15px rgba(0, 0, 0, 0.2);
 }
 
 html {
@@ -37,9 +50,7 @@ body {
   border-bottom: 3px solid black;
   box-shadow: 
     0 -3px 0px black,
-    0 4px 3px rgba(0, 0, 0, 0.4),
-    0 8px 13px 5px rgba(0, 0, 0, 0.3), 
-    0 18px 23px 15px rgba(0, 0, 0, 0.2);
+    var(--box-shadow);
   animation: slide 3s ease;
   animation-fill-mode: forwards;
 }
@@ -79,6 +90,103 @@ h1 {
   }
 }
 
+#gameover {
+  font-family: monospace;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: black;
+  position: fixed;
+  top: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-top: 3px solid #101010;
+  border-bottom: 3px solid #101010;
+  z-index: 2;
+  width: 75vw;
+  left: 0;
+  right: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 90%, rgba(0,0,0,0) 100%);
+  display: none;
+}
+
+#gameover div {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  font-size: 2vw;
+}
+
+#gameover div:nth-of-type(1) {
+  margin-bottom: 0px;
+}
+
+#gameover div:nth-of-type(2) {
+  margin-top: 0px;
+}
+
+#gameover span {
+  position: relative;
+  font-family: "gameover";
+  font-size: 6vw;
+  animation: hop 1s ease-out infinite;
+  animation-fill-mode: forwards;
+  /* text-shadow: var(--text-shadow); */
+  letter-spacing: 1vw;
+}
+
+#gameover span:nth-of-type(1) {
+  animation-delay: 50ms;
+  color: #ff0000;
+}
+
+#gameover span:nth-of-type(2) {
+  animation-delay: 100ms;
+  color: #ff7f00
+}
+
+#gameover span:nth-of-type(3) {
+  animation-delay: 150ms;
+  color: #ffff00
+}
+
+#gameover span:nth-of-type(4) {
+  animation-delay: 200ms;
+  color: #00ff00
+}
+
+#gameover span:nth-of-type(5) {
+  animation-delay: 250ms;
+  color: #0000ff
+}
+
+#gameover span:nth-of-type(6) {
+  animation-delay: 300ms;
+  color: #2e2b5f
+}
+
+#gameover span:nth-of-type(7) {
+  animation-delay: 350ms;
+  color: #8b00ff
+}
+
+#gameover span:nth-of-type(8) {
+  animation-delay: 400ms;
+  color: #ff69b4
+}
+
+
+@keyframes hop {
+  25% {
+    top: -0.5vw;
+  }
+  35% {
+    top: 0;
+  }
+}
+
 .help {
   position: fixed;
   margin: 50px;
@@ -93,7 +201,7 @@ h1 {
   font-family: sans-serif;
   font-size: 4em;
   font-weight: 100;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  text-shadow: var(--text-shadow);
   border-radius: 50%;
   overflow: hidden;
   display: flex;

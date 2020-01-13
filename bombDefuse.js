@@ -1,24 +1,25 @@
-var difficulty = 6;
-var colors = generateColors(difficulty);
-var pickedColor = randomColor();
-var squares = document.querySelectorAll(".wire");
-var easy = document.querySelector("#easy");
-var medium = document.querySelector("#medium");
-var hard = document.querySelector("#hard");
-var reset = document.querySelector("#reset");
-var pickedColorDisplay = document.querySelector("#goal");
-var bombButton = document.querySelectorAll(".bomb-button");
-var bombNumber = document.querySelectorAll(".bomb-number");
-var display = document.querySelector("#calc-display");
-var clearDisplay = document.querySelector("#clear");
-var backspace = document.querySelector("#backspace");
-var LED = document.querySelector(".LED");
-var LEDarmed = document.querySelector("#armed");
-var body = document.querySelector("body");
-var help = document.querySelector(".help");
-var tooltip = document.querySelector("p");
-var farewell = ["goodbye", "ciao", "gd gosh", "bye", "ouch", "bang", "tally ho", "oof", "oh jeez"]
-var displayContent = [];
+let difficulty = 6;
+let colors = generateColors(difficulty);
+let pickedColor = randomColor();
+const squares = document.querySelectorAll(".wire");
+const easy = document.querySelector("#easy");
+const medium = document.querySelector("#medium");
+const hard = document.querySelector("#hard");
+const reset = document.querySelector("#reset");
+const pickedColorDisplay = document.querySelector("#goal");
+const bombButton = document.querySelectorAll(".bomb-button");
+const bombNumber = document.querySelectorAll(".bomb-number");
+const display = document.querySelector("#calc-display");
+const clearDisplay = document.querySelector("#clear");
+const backspace = document.querySelector("#backspace");
+const LED = document.querySelector(".LED");
+const LEDarmed = document.querySelector("#armed");
+const body = document.querySelector("body");
+const gameover = document.querySelector("#gameover");
+const help = document.querySelector(".help");
+const tooltip = document.querySelector("p");
+const farewell = ["goodbye", "ciao", "gd gosh", "bye", "ouch", "bang", "tally ho", "oof", "oh dear", "fail"]
+let displayContent = [];
 // secret difficulty?
 
 //color generators 
@@ -92,6 +93,22 @@ function check() {
     }
 };
 
+function finalCheck() {
+    this.style.display = "none";
+    if (this.style.borderColor === pickedColor) {
+        correct();
+    } else {
+        timedFunctionClear();
+        //display random message (easter egg)
+        display.textContent = farewell[Math.floor(Math.random()*farewell.length)];
+        explode();
+    }
+    //remove finalCheck 
+    for (let i = 0; i < difficulty; i++) {
+        squares[i].removeEventListener("click", finalCheck);        
+    }
+};
+
 //static event listeners
 
 help.addEventListener("mouseover", function () {
@@ -115,6 +132,11 @@ hard.addEventListener("click", function () {
 })
 
 reset.addEventListener("click", resetGame);
+
+gameover.addEventListener("click", function() {
+    //reload the page from cache
+    location.reload();
+});
 
 // background colour functionality
 
@@ -226,34 +248,15 @@ function armed() {
     }
 }
 
-function finalCheck() {
-    this.style.display = "none";
-    if (this.style.borderColor === pickedColor) {
-        correct();
-    } else {
-        timedFunctionClear();
-        //display random message (easter egg)
-        display.textContent = farewell[Math.floor(Math.random()*farewell.length)];
-        explode();
-    }
-    //remove finalCheck 
-    for (let i = 0; i < difficulty; i++) {
-        squares[i].removeEventListener("click", finalCheck);        
-    }
-};
-
 function explode() {
     // --jQuery used for animation effects
     $(".container").effect("explode", { pieces: 9 }, 1500);
     $("#wrapper").slideUp();
     $(".help").fadeOut();
-    //ditch this for Game Over screen
-    setTimeout(refresh, 2000);
-};
-
-//ditch this
-function refresh() {
-    location.reload();
+    //Game Over screen
+    setTimeout(function() {
+        $("#gameover").fadeIn();
+    }, 1500);
 };
 
 //countdown timers
@@ -266,8 +269,6 @@ function timedFunctionClear() {
 }
 
 function timer() {
-    //once this is triggered, disable armed(), call detonate()
-
     let second = difficulty;
     let decisecond = 0;
     let centisecond = 0;
