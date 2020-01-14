@@ -7,7 +7,7 @@ Some additional features that I've added that isn't typical of the standard RGB 
 
 - Interactivity with the squares (or in this case, wires) is limited once the correct wire is picked.
 
-- two fail conditions added, a countdown and a lifeline system. Failure to pick the right wire in time, or too many incorrect guesses will cause the bomb to explode. 
+- two fail conditions added, a countdown and a lifeline mechanic. Failure to pick the right wire in time, or too many incorrect guesses will cause the bomb to explode. 
 
 - LED light indicates 3 states of the bomb, idle, detonation sequence initiated and defused. 
 
