@@ -21,4 +21,6 @@ Some additional features that I've added that isn't typical of the standard RGB 
 
 - Dynamic backgrounds and rainbow text.
 
-- a Game Over screen
+- A Game Over screen.
+
+- Responsive.
