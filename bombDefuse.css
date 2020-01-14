@@ -10,9 +10,7 @@
 
 :root {
   --text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
-  --box-shadow: 
-    0 4px 3px rgba(0, 0, 0, 0.4),
-    0 8px 13px 5px rgba(0, 0, 0, 0.3), 
+  --box-shadow: 0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px 5px rgba(0, 0, 0, 0.3),
     0 18px 23px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -25,15 +23,15 @@ body {
 }
 
 @keyframes backgroundGradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 #wrapper {
@@ -48,9 +46,7 @@ body {
   width: 0%;
   background-color: white;
   border-bottom: 3px solid black;
-  box-shadow: 
-    0 -3px 0px black,
-    var(--box-shadow);
+  box-shadow: 0 -3px 0px black, var(--box-shadow);
   animation: slide 3s ease;
   animation-fill-mode: forwards;
 }
@@ -86,7 +82,7 @@ h1 {
 
 @keyframes fadeIn {
   100% {
-    opacity: 1
+    opacity: 1;
   }
 }
 
@@ -108,7 +104,13 @@ h1 {
   left: 0;
   right: 0;
   background: rgb(255, 255, 255);
-  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 90%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 1) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
   display: none;
 }
 
@@ -133,7 +135,6 @@ h1 {
   font-size: 6vw;
   animation: hop 1s ease-out infinite;
   animation-fill-mode: forwards;
-  /* text-shadow: var(--text-shadow); */
   letter-spacing: 1vw;
 }
 
@@ -144,39 +145,38 @@ h1 {
 
 #gameover span:nth-of-type(2) {
   animation-delay: 100ms;
-  color: #ff7f00
+  color: #ff7f00;
 }
 
 #gameover span:nth-of-type(3) {
   animation-delay: 150ms;
-  color: #ffff00
+  color: #ffff00;
 }
 
 #gameover span:nth-of-type(4) {
   animation-delay: 200ms;
-  color: #00ff00
+  color: #00ff00;
 }
 
 #gameover span:nth-of-type(5) {
   animation-delay: 250ms;
-  color: #0000ff
+  color: #0000ff;
 }
 
 #gameover span:nth-of-type(6) {
   animation-delay: 300ms;
-  color: #2e2b5f
+  color: #2e2b5f;
 }
 
 #gameover span:nth-of-type(7) {
   animation-delay: 350ms;
-  color: #8b00ff
+  color: #8b00ff;
 }
 
 #gameover span:nth-of-type(8) {
   animation-delay: 400ms;
-  color: #ff69b4
+  color: #ff69b4;
 }
-
 
 @keyframes hop {
   25% {
@@ -207,12 +207,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
-    0 0 0 2px black,
-    inset 0 0 0 2px black,
-    0 -3px 0px black,
-    0 4px 3px rgba(0, 0, 0, 0.4),
-    0 8px 13px 5px rgba(0, 0, 0, 0.3), 
+  box-shadow: 0 0 0 2px black, inset 0 0 0 2px black, 0 -3px 0px black,
+    0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px 5px rgba(0, 0, 0, 0.3),
     0 18px 23px 15px rgba(0, 0, 0, 0.2);
   animation: fade 1s ease infinite;
   animation-delay: 3s;
@@ -249,19 +245,17 @@ p {
   font-family: monospace;
   font-size: 2vh;
   border: 3px solid black;
-  box-shadow: 
-    0 4px 3px rgba(0, 0, 0, 0.4),
-    0 8px 13px 5px rgba(0, 0, 0, 0.3), 
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px 5px rgba(0, 0, 0, 0.3),
     0 18px 23px 15px rgba(0, 0, 0, 0.2);
 }
 
-p span:nth-of-type(3n+0) {
+p span:nth-of-type(3n + 0) {
   color: blue;
 }
-p span:nth-of-type(3n+1) {
+p span:nth-of-type(3n + 1) {
   color: red;
 }
-p span:nth-of-type(3n+2) {
+p span:nth-of-type(3n + 2) {
   color: green;
 }
 
@@ -532,8 +526,6 @@ p span:nth-of-type(3n+2) {
     0 0 0 2px #303030;
 }
 
-
-
 .keypad-wires {
   position: absolute;
   top: 350px;
@@ -588,7 +580,7 @@ p span:nth-of-type(3n+2) {
 }
 
 button:focus {
-  outline:0;
+  outline: 0;
 }
 
 .circuit button:hover {
@@ -596,8 +588,8 @@ button:focus {
   height: 31px;
   border-top: 1px solid #303030;
   box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5),
-  inset 0 -2px 0 0 rgba(0, 0, 0, 0.3), 0 4px 3px rgba(0, 0, 0, 0.3),
-  0 8px 13px 5px rgba(0, 0, 0, 0.2), 0 18px 23px 15px rgba(0, 0, 0, 0.1);
+    inset 0 -2px 0 0 rgba(0, 0, 0, 0.3), 0 4px 3px rgba(0, 0, 0, 0.3),
+    0 8px 13px 5px rgba(0, 0, 0, 0.2), 0 18px 23px 15px rgba(0, 0, 0, 0.1);
 }
 
 .circuit button:nth-of-type(4) {
@@ -615,10 +607,8 @@ button:focus {
   height: 28px;
   border-radius: 50%;
   background-color: rgba(255, 0, 0, 0.7);
-  box-shadow: 
-  0 0px 3px 2px rgba(255, 0, 0, 0.4),
-  0 3px 13px 10px rgba(255, 0, 0, 0.3), 
-  0 13px 23px 30px rgba(255, 0, 0, 0.1);
+  box-shadow: 0 0px 3px 2px rgba(255, 0, 0, 0.4),
+    0 3px 13px 10px rgba(255, 0, 0, 0.3), 0 13px 23px 30px rgba(255, 0, 0, 0.1);
   animation: beep 750ms infinite;
   animation-delay: 2750ms;
 }
@@ -629,7 +619,6 @@ button:focus {
   top: 4px;
   left: 8.5px;
   color: white;
-
 }
 
 #blockwire {
@@ -637,8 +626,14 @@ button:focus {
   top: -20px;
   left: 165px;
   height: 150px;
-  width:50px;
-  background: repeating-linear-gradient(90deg, transparent, #303030 1px, #101010 9px, transparent 10px);
+  width: 50px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    #303030 1px,
+    #101010 9px,
+    transparent 10px
+  );
 }
 
 .wire {
