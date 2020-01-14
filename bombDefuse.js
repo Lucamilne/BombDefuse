@@ -1,3 +1,4 @@
+let score = 0;
 let difficulty = 6;
 let colors = generateColors(difficulty);
 let pickedColor = randomColor();
@@ -18,6 +19,7 @@ const body = document.querySelector("body");
 const gameover = document.querySelector("#gameover");
 const help = document.querySelector(".help");
 const tooltip = document.querySelector("p");
+const scoreScreen = document.querySelector("#scoreScreen");
 const farewell = ["goodbye", "ciao", "gd gosh", "bye", "ouch", "bang", "tally ho", "oof", "oh dear", "fail"]
 let displayContent = [];
 // secret difficulty?
@@ -81,6 +83,8 @@ function correct() {
     for (let i = 0; i < difficulty; i++) {
         squares[i].removeEventListener("click", check)
     }
+    //update score
+    score++;
 }
 
 function check() {
@@ -254,6 +258,15 @@ function explode() {
     $("#wrapper").slideUp();
     $(".help").fadeOut();
     //Game Over screen
+    if (score === 0) {
+        scoreScreen.textContent = "You failed to defuse the bomb.";
+    }
+    else if (score > 1) {
+        scoreScreen.textContent = "You defused " + score + " bombs.";
+    }
+    else {
+        scoreScreen.textContent = "You defused " + score + " bomb.";
+    } 
     setTimeout(function() {
         $("#gameover").fadeIn();
     }, 1500);
@@ -293,6 +306,7 @@ function timer() {
 
 //run on startup
 
+//disables help until initial animation is complete
 setTimeout(function () {
     help.style.pointerEvents = "auto";
 }, 3000);

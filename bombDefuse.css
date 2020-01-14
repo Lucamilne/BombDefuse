@@ -1,11 +1,11 @@
 @font-face {
   font-family: "gameover";
-  src: url("Gameplay.ttf");
+  src: url("./fonts/Gameplay.ttf");
 }
 
 @font-face {
   font-family: "Calculator";
-  src: url("LCDAT&TPhoneTimeDate.ttf");
+  src: url("./fonts/LCDAT&TPhoneTimeDate.ttf");
 }
 
 :root {
@@ -129,7 +129,7 @@ h1 {
   margin-top: 0px;
 }
 
-#gameover span {
+#gameover div:nth-of-type(1) span {
   position: relative;
   font-family: "gameover";
   font-size: 6vw;
@@ -138,42 +138,42 @@ h1 {
   letter-spacing: 1vw;
 }
 
-#gameover span:nth-of-type(1) {
+#gameover div:nth-of-type(1) span:nth-of-type(1) {
   animation-delay: 50ms;
   color: #ff0000;
 }
 
-#gameover span:nth-of-type(2) {
+#gameover div:nth-of-type(1) span:nth-of-type(2) {
   animation-delay: 100ms;
   color: #ff7f00;
 }
 
-#gameover span:nth-of-type(3) {
+#gameover div:nth-of-type(1) span:nth-of-type(3) {
   animation-delay: 150ms;
   color: #ffff00;
 }
 
-#gameover span:nth-of-type(4) {
+#gameover div:nth-of-type(1) span:nth-of-type(4) {
   animation-delay: 200ms;
   color: #00ff00;
 }
 
-#gameover span:nth-of-type(5) {
+#gameover div:nth-of-type(1) span:nth-of-type(5) {
   animation-delay: 250ms;
   color: #0000ff;
 }
 
-#gameover span:nth-of-type(6) {
+#gameover div:nth-of-type(1) span:nth-of-type(6) {
   animation-delay: 300ms;
   color: #2e2b5f;
 }
 
-#gameover span:nth-of-type(7) {
+#gameover div:nth-of-type(1) span:nth-of-type(7) {
   animation-delay: 350ms;
   color: #8b00ff;
 }
 
-#gameover span:nth-of-type(8) {
+#gameover div:nth-of-type(1) span:nth-of-type(8) {
   animation-delay: 400ms;
   color: #ff69b4;
 }

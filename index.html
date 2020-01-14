@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <!-- content="width=device-width, initial-scale=1.0" -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bomb Defusal RGB Game</title>
     <!-- jQuery for UI plugin-->
@@ -25,8 +24,11 @@
         <h1>Cut the <span class="rainbowText" id="goal"></span> wire atop the bomb!</h1>
     </div>
     <div id="gameover">
-        <div class="gameover-anim"><span>g</span><span>a</span><span>m</span><span>e </span><span>o</span><span>v</span><span>e</span><span>r</span></div>
-        <div>play again?</div>
+        <div class="gameover-anim"><span>g</span><span>a</span><span>m</span><span>e
+            </span><span>o</span><span>v</span><span>e</span><span>r</span></div>
+        <div>
+            <span id="scoreScreen"></span>&nbsp;play again?
+        </div>
     </div>
     <p>
         Click on the correct coloured wire as described by the header, e.g. Cut the
@@ -35,7 +37,8 @@
         <br>
         <br>
         Each parameter (<span>red</span>, <span>green</span>, and <span>blue</span>) defines the intensity of the color
-        as an integer between 0 and 255. Should you choose a wrong wire, the bomb will be armed and a countdown will begin. 
+        as an integer between 0 and 255. Should you choose a wrong wire, the bomb will be armed and a countdown will
+        begin.
         Choose incorrectly again or let the timer run down and it's game over!
         <br>
         <br>
@@ -43,7 +46,8 @@
         <span>red</span> reset button.
         <br>
         <br>
-        Press the grey buttons to change the number of wires connected to the bomb by 3, 6 and 9 respectively. Try 9 for a real challenge! 
+        Press the grey buttons to change the number of wires connected to the bomb by 3, 6 and 9 respectively. Try 9 for
+        a real challenge!
     </p>
     <figure class="help">?</figure>
     <main class="container">
