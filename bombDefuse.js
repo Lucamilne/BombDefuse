@@ -254,7 +254,7 @@ function armed() {
 
 function explode() {
     // --jQuery used for animation effects
-    $(".container").effect("explode", { pieces: 9 }, 1500);
+    $(".bomb").effect("explode", { pieces: 9 }, 1500);
     $("#wrapper").slideUp();
     $(".help").fadeOut();
     //Game Over screen
