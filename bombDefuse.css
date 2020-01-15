@@ -74,6 +74,31 @@ h1 {
   }
 }
 
+.explosion {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  width: 75vmin;
+  left: 0;
+  right: 0;
+  display: none;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  animation: explosion 1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes explosion {
+  15% {
+    transform: scale(2.0)
+  }
+}
+
+
 #gameover {
   font-family: monospace;
   text-transform: uppercase;
@@ -82,14 +107,11 @@ h1 {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 5%;
   padding-right: 5%;
   border-top: 0.25vmin solid #101010;
   border-bottom: 0.25vmin solid #101010;
-  z-index: 2;
-  width: 75vmin;
+  z-index: 3;
   left: 0;
   right: 0;
   background: rgb(255, 255, 255);
@@ -101,6 +123,7 @@ h1 {
     rgba(0, 0, 0, 0) 100%
   );
   display: none;
+  box-shadow: var(--box-shadow);
 }
 
 #gameover div {
@@ -249,14 +272,14 @@ p span:nth-of-type(3n + 2) {
   color: green;
 }
 
-.container {
+.bomb {
   width: 660px;
   height: 925px;
   position: absolute;
   margin: 0 auto;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.45)
+  transform: translate(-50%, -50%) scale(0.45);
 }
 
 .c4 {
@@ -699,7 +722,7 @@ button:focus {
 }
 
 @media only screen and (min-width: 480px) {
-  .container {
+  .bomb {
     transform: translate(-50%, -50%) scale(0.6);
   }
 }
@@ -712,7 +735,7 @@ button:focus {
   h1 div {
     display: inline;
   }
-  .container {
+  .bomb {
     transform: translate(-50%, -50%) scale(0.8);
   }
 }
@@ -728,7 +751,7 @@ button:focus {
 }
 
 @media only screen and (min-width: 2560px) {
-  .container {
+  .bomb {
     transform: translate(-50%, -50%) scale(1.2);
   }
 }
