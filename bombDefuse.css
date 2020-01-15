@@ -716,7 +716,7 @@ button:focus {
 /* Media Queries */
 
 @media screen and (max-height: 480px) {
-  .container {
+  .bomb {
     transform: translate(-50%, -48%) scale(0.42);
   }
 }
