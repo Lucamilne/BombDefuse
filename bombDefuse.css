@@ -86,10 +86,10 @@ h1 {
   margin-right: auto;
   padding-left: 5%;
   padding-right: 5%;
-  border-top: 3px solid #101010;
-  border-bottom: 3px solid #101010;
+  border-top: 0.25vmin solid #101010;
+  border-bottom: 0.25vmin solid #101010;
   z-index: 2;
-  width: 75vw;
+  width: 75vmin;
   left: 0;
   right: 0;
   background: rgb(255, 255, 255);
@@ -107,7 +107,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 5px;
-  font-size: 2vw;
+  font-size: 2vmin;
 }
 
 #gameover div:nth-of-type(1) {
@@ -121,7 +121,7 @@ h1 {
 #gameover div:nth-of-type(1) span {
   position: relative;
   font-family: "gameover";
-  font-size: 6vw;
+  font-size: 6vmin;
   animation: hop 1s ease-out infinite;
   animation-fill-mode: forwards;
   letter-spacing: 1vw;
@@ -249,7 +249,7 @@ p span:nth-of-type(3n + 2) {
   color: green;
 }
 
-.bomb {
+.container {
   width: 660px;
   height: 925px;
   position: absolute;
@@ -413,7 +413,6 @@ p span:nth-of-type(3n + 2) {
 #calc-display {
   font-family: "Calculator";
   font-size: 64px;
-  /* font-variant-numeric: tabular-nums; */
   position: absolute;
   top: 187px;
   left: 204px;
@@ -423,7 +422,6 @@ p span:nth-of-type(3n + 2) {
   height: 56px;
   display: flex;
   align-items: center;
-  /* line-height: 59px; */
   letter-spacing: 7.5px;
   direction: rtl;
   border: 12px solid #202020;
@@ -695,13 +693,13 @@ button:focus {
 /* Media Queries */
 
 @media screen and (max-height: 480px) {
-  .bomb {
+  .container {
     transform: translate(-50%, -48%) scale(0.42);
   }
 }
 
 @media only screen and (min-width: 480px) {
-  .bomb {
+  .container {
     transform: translate(-50%, -50%) scale(0.6);
   }
 }
@@ -714,7 +712,7 @@ button:focus {
   h1 div {
     display: inline;
   }
-  .bomb {
+  .container {
     transform: translate(-50%, -50%) scale(0.8);
   }
 }
@@ -730,7 +728,7 @@ button:focus {
 }
 
 @media only screen and (min-width: 2560px) {
-  .bomb {
+  .container {
     transform: translate(-50%, -50%) scale(1.2);
   }
 }
