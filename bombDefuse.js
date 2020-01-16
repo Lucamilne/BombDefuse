@@ -263,13 +263,13 @@ function explode() {
     $(".help").fadeOut();
     //Game Over screen
     if (score === 0) {
-        scoreScreen.textContent = "You failed to defuse the bomb.";
+        scoreScreen.textContent = "You failed to defuse the bomb. Play again?";
     }
     else if (score > 1) {
-        scoreScreen.textContent = "You defused " + score + " bombs.";
+        scoreScreen.textContent = "You defused " + score + " bombs. Play again?";
     }
     else {
-        scoreScreen.textContent = "You defused " + score + " bomb.";
+        scoreScreen.textContent = "You defused " + score + " bomb. Play again?";
     }
     setTimeout(function () {
         $("#gameover").fadeIn();
