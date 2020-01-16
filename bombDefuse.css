@@ -33,7 +33,7 @@ body {
   padding: 0px;
   width: 0%;
   background-color: white;
-  border-bottom: 3px solid black;
+  border-bottom: 0.25vmin solid #101010;
   box-shadow: 0 -3px 0px black, var(--box-shadow);
   animation: slide 3s ease;
   animation-fill-mode: forwards;
@@ -742,6 +742,21 @@ button:focus {
 
 #wire9 {
   left: 600px;
+}
+
+#pliers {
+  position: absolute;
+  transform: none;
+  width: 20vmin;
+  display: none;
+  animation: cut 250ms ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cut {
+  25% {
+    transform: scale(1.2);
+  }
 }
 
 /* Media Queries */

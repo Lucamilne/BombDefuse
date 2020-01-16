@@ -70,7 +70,8 @@ function newGame() {
     for (let i = 0; i < difficulty; i++) {
         squares[i].style.display = "block";
         squares[i].style.borderColor = colors[i];
-        squares[i].addEventListener("click", check)
+        squares[i].addEventListener("click", check);
+        squares[i].addEventListener("click", pliersCut)
     }
     enableButtons();
     generateRainbowText(pickedColorDisplay);
@@ -81,7 +82,9 @@ function correct() {
     pickedBackgroundColor();
     //remove interactivity on game completion
     for (let i = 0; i < difficulty; i++) {
-        squares[i].removeEventListener("click", check)
+        squares[i].removeEventListener("click", check);
+        squares[i].removeEventListener("click", pliersCut)
+
     }
     //update score
     score++;
@@ -104,12 +107,12 @@ function finalCheck() {
     } else {
         timedFunctionClear();
         //display random message (easter egg)
-        display.textContent = farewell[Math.floor(Math.random()*farewell.length)];
+        display.textContent = farewell[Math.floor(Math.random() * farewell.length)];
         explode();
     }
-    //remove finalCheck 
+    //remove finalCheck on wrong guess. Either the game is won or lost at this point
     for (let i = 0; i < difficulty; i++) {
-        squares[i].removeEventListener("click", finalCheck);        
+        squares[i].removeEventListener("click", finalCheck);
     }
 };
 
@@ -137,7 +140,7 @@ hard.addEventListener("click", function () {
 
 reset.addEventListener("click", resetGame);
 
-gameover.addEventListener("click", function() {
+gameover.addEventListener("click", function () {
     //reload the page from cache
     location.reload();
 });
@@ -247,8 +250,8 @@ function armed() {
     myTimeoutID = setTimeout(timer, 1000)
     //replace check with detonateCheck
     for (let i = 0; i < difficulty; i++) {
-        squares[i].removeEventListener("click", check);        
-        squares[i].addEventListener("click", finalCheck);        
+        squares[i].removeEventListener("click", check);
+        squares[i].addEventListener("click", finalCheck);
     }
 }
 
@@ -267,8 +270,8 @@ function explode() {
     }
     else {
         scoreScreen.textContent = "You defused " + score + " bomb.";
-    } 
-    setTimeout(function() {
+    }
+    setTimeout(function () {
         $("#gameover").fadeIn();
     }, 1500);
 };
@@ -326,4 +329,22 @@ function generateRainbowText(element) {
         charElem.innerHTML = text[i];
         element.appendChild(charElem);
     }
+};
+
+//pliers
+
+function pliersCut() {
+    let pliers = document.querySelector("#pliers");
+    let x, y;
+
+    x = event.pageX;
+    y = event.pageY;
+    //plays the cutting animation based on the click location
+    pliers.style.display = "block"
+    pliers.style.left = x + "px";
+    pliers.style.top = y + "px";
+    // fade out the pliers 150ms into animation
+    setTimeout(function () {
+        $("#pliers").fadeOut();
+    }, 150);
 };
