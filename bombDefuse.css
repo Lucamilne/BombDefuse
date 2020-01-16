@@ -33,7 +33,7 @@ body {
   padding: 0px;
   width: 0%;
   background-color: white;
-  border-bottom: 0.25vmin solid #101010;
+  border-bottom: 3px solid #101010;
   box-shadow: 0 -3px 0px black, var(--box-shadow);
   animation: slide 3s ease;
   animation-fill-mode: forwards;
@@ -139,8 +139,8 @@ img:nth-of-type(4) {
   transform: translateY(-50%);
   padding-left: 5%;
   padding-right: 5%;
-  border-top: 0.25vmin solid #101010;
-  border-bottom: 0.25vmin solid #101010;
+  border-top: 3px solid #101010;
+  border-bottom: 3px solid #101010;
   z-index: 3;
   left: 0;
   right: 0;
