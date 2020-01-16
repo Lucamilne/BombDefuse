@@ -41,7 +41,7 @@ body {
 
 h1 {
   opacity: 0;
-  font-family: "gameover";
+  font-family: monospace;
   font-size: 5vw;
   letter-spacing: 2px;
   text-align: center;
