@@ -322,7 +322,7 @@ p span:nth-of-type(3n + 2) {
   margin: 0;
   border-radius: 10px;
   background-color: rgb(123, 106, 78);
-  background-image: url("https://www.transparenttextures.com/patterns/exclusive-paper.png");
+  background-image: url("./images/C4_texture.png");
   box-shadow: inset 5px 0 8px 0 rgba(0, 0, 0, 0.5),
     inset -5px -5px 8px 0 rgba(0, 0, 0, 0.4), 0 4px 3px rgba(0, 0, 0, 0.4),
     0 8px 13px 5px rgba(0, 0, 0, 0.3), 0 18px 23px 15px rgba(0, 0, 0, 0.2),
@@ -503,7 +503,7 @@ p span:nth-of-type(3n + 2) {
   padding-top: 1px;
   padding-left: 25px;
   background-color: #404040;
-  background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+  background-image: url("./images/Plastic_texture.png");
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
   grid-template-columns: repeat(3, 60px);
   grid-template-rows: repeat(4, auto);
@@ -546,7 +546,7 @@ p span:nth-of-type(3n + 2) {
   width: 660px;
   height: 80px;
   background-color: #404040;
-  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+  background-image: url("./images/Tape_texture.png");
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 -1px 2px 0 rgba(0, 0, 0, 0.4),
     0 0 0 2px #303030;
 }
@@ -560,7 +560,7 @@ p span:nth-of-type(3n + 2) {
 
   content: "";
   background-color: #404040;
-  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+  background-image: url("./images/Tape_texture.png");
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 -2px 3px 0 rgba(0, 0, 0, 0.4),
     0 0 0 2px #303030;
 }
