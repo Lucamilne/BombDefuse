@@ -348,3 +348,32 @@ function pliersCut() {
         $("#pliers").fadeOut();
     }, 150);
 };
+
+//experimental scaling
+
+function bombScale(event) {
+    const bomb = document.querySelector(".bomb");
+    let docHeight = document.querySelector("*").clientHeight;
+    let docWidth = document.querySelector("*").clientWidth;
+    let wrapperHeight = document.querySelector("#wrapper").clientHeight * 2.5;
+
+    const heightOfBomb = 945;
+    const widthOfBomb = 680;
+
+    let scaleWidth = (docWidth - 20) / widthOfBomb;
+    let heightOfBombSpace = docHeight - wrapperHeight;
+    let scaleHeight = heightOfBombSpace / heightOfBomb;
+
+    bomb.style.transform = "translate(-50%, -50%) scale(" + Math.min(scaleWidth, scaleHeight) + ")"
+
+    // if (docWidth < widthOfBomb) {
+    //     console.log("width f " + scaleWidth + " doc height: " + docHeight + "doc width " + docWidth);
+    //     bomb.style.transform = "translate(-50%, -50%) scale(" + scaleWidth + ")"
+    // }
+    // else {
+    //     bomb.style.transform = "translate(-50%, -50%) scale(" + scaleHeight + ")"
+    // }
+}
+
+window.onload = bombScale;
+window.onresize = bombScale;
