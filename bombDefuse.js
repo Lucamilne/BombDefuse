@@ -80,6 +80,7 @@ function newGame() {
 function correct() {
     defusal();
     pickedBackgroundColor();
+    pliersCut();
     //remove interactivity on game completion
     for (let i = 0; i < difficulty; i++) {
         squares[i].removeEventListener("click", check);
@@ -349,7 +350,7 @@ function pliersCut() {
     }, 150);
 };
 
-//experimental scaling
+//scaling bomb size based on client width/height
 
 function bombScale(event) {
     const bomb = document.querySelector(".bomb");
@@ -364,15 +365,7 @@ function bombScale(event) {
     let heightOfBombSpace = docHeight - wrapperHeight;
     let scaleHeight = heightOfBombSpace / heightOfBomb;
 
-    bomb.style.transform = "translate(-50%, -50%) scale(" + Math.min(scaleWidth, scaleHeight) + ")"
-
-    // if (docWidth < widthOfBomb) {
-    //     console.log("width f " + scaleWidth + " doc height: " + docHeight + "doc width " + docWidth);
-    //     bomb.style.transform = "translate(-50%, -50%) scale(" + scaleWidth + ")"
-    // }
-    // else {
-    //     bomb.style.transform = "translate(-50%, -50%) scale(" + scaleHeight + ")"
-    // }
+    bomb.style.transform = "translate(-50%, -50%) scale(" + Math.min(scaleWidth, scaleHeight) + ")";
 }
 
 window.onload = bombScale;
