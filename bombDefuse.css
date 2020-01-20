@@ -763,9 +763,9 @@ button:focus {
 
 
 @media only screen and (min-width: 480px) {
-  /* .bomb {
+  .bomb {
     transform: translate(-50%, -50%) scale(0.6);
-  } */
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -776,9 +776,9 @@ button:focus {
   h1 div {
     display: inline;
   }
-  /* .bomb {
+  .bomb {
     transform: translate(-50%, -50%) scale(0.8);
-  } */
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -792,7 +792,7 @@ button:focus {
 }
 
 @media only screen and (min-width: 2560px) {
-  /* .bomb {
+  .bomb {
     transform: translate(-50%, -50%) scale(1.2);
-  } */
+  }
 }
