@@ -57,9 +57,9 @@ function resetGame() {
     colors = generateColors(difficulty);
     pickedColor = randomColor();
     pickedColorDisplay.textContent = pickedColor;
-    for (let i = 0; i < 9; i++) {
-        squares[i].style.display = "none";
-    }
+    squares.forEach(function(wire) {
+        wire.style.display = "none";
+    });
     resetDisplay();
     resetIdleLED();
     timedFunctionClear()
@@ -107,8 +107,6 @@ function finalCheck() {
         correct();
     } else {
         timedFunctionClear();
-        //display random message (easter egg)
-        display.textContent = farewell[Math.floor(Math.random() * farewell.length)];
         explode();
     }
     //remove finalCheck on wrong guess. Either the game is won or lost at this point
@@ -169,9 +167,8 @@ function resetDisplay() {
 }
 
 //bomb keypad button interactivity
-
 function enableButtons() {
-    for (let i = 0; i < bombNumber.length; i++) {
+    for (let i = 0; i < 10; i++) {
         bombNumber[i].addEventListener("click", numButton);
     };
     clearDisplay.addEventListener("click", resetDisplay);
@@ -179,7 +176,7 @@ function enableButtons() {
 };
 
 function disableButtons() {
-    for (let i = 0; i < bombButton.length; i++) {
+    for (let i = 0; i < 10; i++) {
         bombButton[i].removeEventListener("click", numButton);
     };
     clearDisplay.removeEventListener("click", resetDisplay);
@@ -209,7 +206,7 @@ function backspaceButton() {
 var id;
 
 function blinkingText() {
-    display.textContent = display.textContent == "press" ? "play" : "press";
+    display.textContent = display.textContent == "press" ? "red" : "press";
 }
 
 function stopBlinkingText() {
@@ -352,7 +349,7 @@ function pliersCut() {
 
 //scaling bomb size based on client width/height
 
-function bombScale(event) {
+function bombScale() {
     const bomb = document.querySelector(".bomb");
     let docHeight = document.querySelector("*").clientHeight;
     let docWidth = document.querySelector("*").clientWidth;
