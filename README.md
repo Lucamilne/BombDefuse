@@ -5,11 +5,11 @@ The Bomb Defusal RGB Game is a unique interpretation of the RGB color game, a st
 
 Some additional features that I've added that isn't typical of the standard RGB color game:
 
-- Interactivity with the squares (or in this case, wires) is limited once the correct wire is picked.
+- Interactivity is limited once the correct wire is picked.
 
 - two fail conditions added, a countdown and a lifeline mechanic. Failure to pick the right wire in time, or too many incorrect guesses will cause the bomb to explode. 
 
-- LED light indicates 3 states of the bomb, idle, detonation sequence initiated and defused. 
+- LED light indicates 3 states of the bomb, idle, armed and defused. 
 
 - Buttons on the bomb are interactive with the display. This is purely cosmetic and has no impact on the game mechanics. 
 
@@ -24,3 +24,9 @@ Some additional features that I've added that isn't typical of the standard RGB 
 - A Game Over screen.
 
 - Responsive.
+
+- An animation of pliers is played whenever a wire is cut.
+
+/* POSSIBLE FUTURE ADDITIONS */
+
+- Sound effects added using Howler.js library
