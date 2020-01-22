@@ -57,7 +57,7 @@ function resetGame() {
     colors = generateColors(difficulty);
     pickedColor = randomColor();
     pickedColorDisplay.textContent = pickedColor;
-    squares.forEach(function(wire) {
+    squares.forEach(function (wire) {
         wire.style.display = "none";
     });
     resetDisplay();
@@ -313,9 +313,6 @@ setTimeout(function () {
     help.style.pointerEvents = "auto";
 }, 3000);
 
-window.onload = resetGame();
-window.onLoad = body.style.transition = "4s ease";
-
 //rainbow text
 
 function generateRainbowText(element) {
@@ -367,3 +364,5 @@ function bombScale() {
 
 window.onload = bombScale;
 window.onresize = bombScale;
+$("document").ready(resetGame);
+window.onLoad = body.style.transition = "4s ease";
