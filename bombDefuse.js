@@ -206,7 +206,7 @@ function backspaceButton() {
 var id;
 
 function blinkingText() {
-    display.textContent = display.textContent == "press" ? "red" : "press";
+    display.textContent = display.textContent == "press" ? "play" : "press";
 }
 
 function stopBlinkingText() {
