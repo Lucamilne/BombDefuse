@@ -26,7 +26,3 @@ Some additional features that I've added that isn't typical of the standard RGB 
 - Responsive.
 
 - An animation of pliers is played whenever a wire is cut.
-
-/* POSSIBLE FUTURE ADDITIONS */
-
-- Sound effects added using Howler.js library
