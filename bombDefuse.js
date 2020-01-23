@@ -22,7 +22,6 @@ const tooltip = document.querySelector("p");
 const scoreScreen = document.querySelector("#scoreScreen");
 const farewell = ["goodbye", "ciao", "gd gosh", "bye", "ouch", "bang", "tally ho", "oof", "oh dear", "fail"]
 let displayContent = [];
-// secret difficulty?
 
 //color generators 
 function random() {
@@ -45,7 +44,11 @@ function randomColor() {
     return colors[randIndexOfColors];
 }
 
+//======================
 //generic game functions
+//======================
+
+//changing difficulty (amount of wires)
 function setDifficulty(val) {
     if (difficulty !== val) {
         difficulty = val;
@@ -109,13 +112,15 @@ function finalCheck() {
         timedFunctionClear();
         explode();
     }
-    //remove finalCheck on wrong guess. Either the game is won or lost at this point
+    //remove finalCheck regardless of choice. Game is won or lost by this point
     for (let i = 0; i < difficulty; i++) {
         squares[i].removeEventListener("click", finalCheck);
     }
 };
 
+//======================
 //static event listeners
+//======================
 
 help.addEventListener("mouseover", function () {
     tooltip.style.display = "block";
@@ -144,7 +149,9 @@ gameover.addEventListener("click", function () {
     location.reload();
 });
 
+//================================
 // background colour functionality
+//================================
 
 function pickedBackgroundColor() {
     document.querySelector("body").style.backgroundColor = pickedColor;
@@ -154,7 +161,12 @@ body.style.backgroundColor = random();
 
 help.style.backgroundColor = random();
 
+//Not necessary. Allows me to work from a Live Server without transistion of body margin when CSS is updated. Can safely be removed.
+window.onLoad = body.style.transition = "4s ease";
+
+//========================
 //LCD screen interactivity
+//========================
 
 function displayContentUpdate() {
     display.textContent = displayContent.join('');
@@ -206,7 +218,7 @@ function backspaceButton() {
 var id;
 
 function blinkingText() {
-    display.textContent = display.textContent == "press" ? "play" : "press";
+    display.textContent = display.textContent == "press" ? "red" : "press";
 }
 
 function stopBlinkingText() {
@@ -222,7 +234,9 @@ function resetIdleLED() {
     document.querySelector("#reset div").classList.remove("alert");
 }
 
+//===========
 //game states
+//===========
 
 function defusal() {
     LED.classList.remove("LED-idle", "LED-incorrect")
@@ -274,7 +288,7 @@ function explode() {
     }, 1500);
 };
 
-//countdown timers
+//countdown timer
 
 let myCountdownID;
 
@@ -305,8 +319,6 @@ function timer() {
         }
     }, 10);
 };
-
-//run on startup
 
 //disables help until initial animation is complete
 setTimeout(function () {
@@ -344,7 +356,9 @@ function pliersCut() {
     }, 150);
 };
 
+//==============================================
 //scaling bomb size based on client width/height
+//==============================================
 
 function bombScale() {
     const bomb = document.querySelector(".bomb");
@@ -352,6 +366,7 @@ function bombScale() {
     let docWidth = document.querySelector("*").clientWidth;
     let wrapperHeight = document.querySelector("#wrapper").clientHeight * 2.5;
 
+    //these are the hard coded px height and width that the bomb was initially drawn in
     const heightOfBomb = 945;
     const widthOfBomb = 680;
 
@@ -362,7 +377,9 @@ function bombScale() {
     bomb.style.transform = "translate(-50%, -50%) scale(" + Math.min(scaleWidth, scaleHeight) + ")";
 }
 
+//bomb adjusts to client window on page load (once all assests are ready) and resize 
 window.onload = bombScale;
 window.onresize = bombScale;
+
+//run on startup
 $("document").ready(resetGame);
-window.onLoad = body.style.transition = "4s ease";
