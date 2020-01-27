@@ -1,107 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Bomb Defusal RGB Game</title>
     <!-- jQuery for UI plugin-->
     <script type="text/javascript" src="./libs/jquery-3.4.1.min.js"></script>
     <!-- snippet of CSS to avoid FoUC -->
     <style>
-        html {
-            visibility: hidden;
-        }
+      html {
+        visibility: hidden;
+      }
     </style>
-    <link rel="stylesheet" type="text/css" href="bombDefuse.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="bombDefuse.css" />
+  </head>
 
-<body>
+  <body>
     <div id="wrapper">
-        <h1>
-            <div>Cut the <span id="goal"></span></div>
-            <div>wire atop the bomb!</div>
-        </h1>
+      <h1>
+        <div>Cut the <span id="goal"></span></div>
+        <div>wire atop the bomb!</div>
+      </h1>
     </div>
     <div class="explosion">
-        <img src="./images/Smoke.png" class="smoke" alt="Smoke">
-        <img src="./images/Smoke.png" class="smoke" alt="Smoke">
-        <img src="./images/Smoke.png" class="smoke" alt="Smoke">
-        <img src="./images/Smoke.png" class="smoke" alt="Smoke">
-        <img src="./images/Boom.webp" alt="Explosion!">
-        <div id="gameover">
-            <div class="gameover-anim"><span>g</span><span>a</span><span>m</span><span>e
-                </span><span>o</span><span>v</span><span>e</span><span>r</span></div>
-            <div>
-                <span id="scoreScreen"></span>
-            </div>
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Boom.webp" alt="Explosion!" />
+      <div id="gameover">
+        <div class="gameover-anim">
+          <span>g</span><span>a</span><span>m</span><span>e </span><span>o</span
+          ><span>v</span><span>e</span><span>r</span>
         </div>
+        <div>
+          <span id="scoreScreen"></span>
+        </div>
+      </div>
     </div>
     <p>
-        Click on the correct coloured wire as described by the header, e.g. Cut the
-        <span>R</span><span>G</span><span>B</span>(<span>255</span>, <span>255</span>, <span>255</span>) wire atop the
-        bomb!
-        <br>
-        <br>
-        Each parameter (<span>red</span>, <span>green</span>, and <span>blue</span>) defines the intensity of the color
-        as an integer between 0 and 255. Should you choose a wrong wire, the bomb will be armed and a countdown will
-        begin.
-        Choose incorrectly again or let the timer run down and it's game over!
-        <br>
-        <br>
-        You can reset the game, or choose new colours at any time by pressing the
-        <span>red</span> reset button.
-        <br>
-        <br>
-        Press the grey buttons to change the number of wires connected to the bomb by 3, 6 and 9 respectively. Try 9 for
-        a real challenge!
+      Click on the correct coloured wire as described by the header, e.g. Cut
+      the
+      <span>R</span><span>G</span><span>B</span>(<span>255</span>,
+      <span>255</span>, <span>255</span>) wire atop the bomb!
+      <br />
+      <br />
+      Each parameter (<span>red</span>, <span>green</span>, and
+      <span>blue</span>) defines the intensity of the color as an integer
+      between 0 and 255. Should you choose a wrong wire, the bomb will be armed
+      and a countdown will begin. Choose incorrectly again or let the timer run
+      down and it's game over!
+      <br />
+      <br />
+      You can reset the game, or choose new colours at any time by pressing the
+      <span>red</span> reset button.
+      <br />
+      <br />
+      Press the grey buttons to change the number of wires connected to the bomb
+      by 3, 6 and 9 respectively. Try 9 for a real challenge!
     </p>
     <figure class="help">?</figure>
-        <main class="bomb">
-            <div class="wire" id="wire1"></div>
-            <div class="wire" id="wire2"></div>
-            <div class="wire" id="wire3"></div>
-            <div class="wire" id="wire4"></div>
-            <div class="wire" id="wire5"></div>
-            <div class="wire" id="wire6"></div>
-            <div class="wire" id="wire7"></div>
-            <div class="wire" id="wire8"></div>
-            <div class="wire" id="wire9"></div>
-            <div class="receiver">
-                <div class="LED"></div>
-                <div id="armed"></div>
-            </div>
-            <div class="c4 c4-1"></div>
-            <div class="c4 c4-2"></div>
-            <div class="c4 c4-3"></div>
-            <nav class="circuit">
-                <button id="easy" title="Easy difficulty">3</button>
-                <button id="medium" title="Normal difficulty">6</button>
-                <button id="hard" title="Hard difficulty">9</button>
-                <div id="blockwire"></div>
-                <button id="reset" title="Reset game">R<div></div></button>
-            </nav>
-            <div class="tape"></div>
-            <div class="keypad-wires"></div>
-            <div class="calc-base">
-                <li class="bomb-button bomb-number">1</li>
-                <li class="bomb-button bomb-number">2</li>
-                <li class="bomb-button bomb-number">3</li>
-                <li class="bomb-button bomb-number">4</li>
-                <li class="bomb-button bomb-number">5</li>
-                <li class="bomb-button bomb-number">6</li>
-                <li class="bomb-button bomb-number">7</li>
-                <li class="bomb-button bomb-number">8</li>
-                <li class="bomb-button bomb-number">9</li>
-                <li class="bomb-button" id="backspace">DEL</li>
-                <li class="bomb-button bomb-number">0</li>
-                <li class="bomb-button" id="clear">C</li>
-            </div>
-            <div id="calc-display"></div>
-        </main>
-    <img src="./images/Pliers.png" id="pliers">
+    <main class="bomb">
+      <div class="wire" id="wire1"></div>
+      <div class="wire" id="wire2"></div>
+      <div class="wire" id="wire3"></div>
+      <div class="wire" id="wire4"></div>
+      <div class="wire" id="wire5"></div>
+      <div class="wire" id="wire6"></div>
+      <div class="wire" id="wire7"></div>
+      <div class="wire" id="wire8"></div>
+      <div class="wire" id="wire9"></div>
+      <div class="receiver">
+        <div class="LED"></div>
+        <div id="armed"></div>
+      </div>
+      <div class="c4 c4-1"></div>
+      <div class="c4 c4-2"></div>
+      <div class="c4 c4-3"></div>
+      <nav class="circuit">
+        <button id="easy" title="Easy difficulty">3</button>
+        <button id="medium" title="Normal difficulty">6</button>
+        <button id="hard" title="Hard difficulty">9</button>
+        <div id="blockwire"></div>
+        <button id="reset" title="Reset game">
+          R
+          <div></div>
+        </button>
+      </nav>
+      <div class="tape"></div>
+      <div class="keypad-wires"></div>
+      <div class="calc-base">
+        <li class="bomb-button bomb-number">1</li>
+        <li class="bomb-button bomb-number">2</li>
+        <li class="bomb-button bomb-number">3</li>
+        <li class="bomb-button bomb-number">4</li>
+        <li class="bomb-button bomb-number">5</li>
+        <li class="bomb-button bomb-number">6</li>
+        <li class="bomb-button bomb-number">7</li>
+        <li class="bomb-button bomb-number">8</li>
+        <li class="bomb-button bomb-number">9</li>
+        <li class="bomb-button" id="backspace">DEL</li>
+        <li class="bomb-button bomb-number">0</li>
+        <li class="bomb-button" id="clear">C</li>
+      </div>
+      <div id="calc-display"></div>
+    </main>
+    <figure class="health" title="Remaining guesses">
+        <img src="./images/pixelheart.webp" class="heart" id="heart1"/>
+        <img src="./images/pixelheart.webp" class="heart" id="heart2"/>
+    </figure>
+    <img src="./images/Pliers.png" id="pliers" />
     <script type="text/javascript" src="bombDefuse.js"></script>
-</body>
-
+  </body>
 </html>

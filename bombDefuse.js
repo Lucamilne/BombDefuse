@@ -1,4 +1,5 @@
 let score = 0;
+let lives = 2;
 let difficulty = 6;
 let colors = generateColors(difficulty);
 let pickedColor = randomColor();
@@ -45,7 +46,7 @@ function randomColor() {
 }
 
 //======================
-//generic game functions
+//Generic game functions
 //======================
 
 //changing difficulty (amount of wires)
@@ -66,6 +67,7 @@ function resetGame() {
     resetDisplay();
     resetIdleLED();
     timedFunctionClear()
+    updateLives();
     newGame();
 }
 
@@ -82,6 +84,7 @@ function newGame() {
 
 function correct() {
     defusal();
+    lives = 2;
     pickedBackgroundColor();
     pliersCut();
     //remove interactivity on game completion
@@ -99,24 +102,30 @@ function check() {
     this.style.display = "none";
     if (this.style.borderColor === pickedColor) {
         correct();
-    } else {
+    } else if (lives === 2) {
+        lives--;
+        updateLives();
         armed();
+    } else if (lives === 1) {
+        timedFunctionClear();
+        lives--;
+        updateLives();
+        explode();
     }
 };
 
-function finalCheck() {
-    this.style.display = "none";
-    if (this.style.borderColor === pickedColor) {
-        correct();
+function updateLives() {
+    if (lives === 2) {
+        document.querySelectorAll(".heart").forEach(function(element) {
+            element.classList.remove("lifelost")
+            // element.style.opacity = "1";
+        });
+    } else if (lives === 1) {
+        document.getElementById("heart1").classList.add("lifelost");
     } else {
-        timedFunctionClear();
-        explode();
+        document.getElementById("heart2").classList.add("lifelost");
     }
-    //remove finalCheck regardless of choice. Game is won or lost by this point
-    for (let i = 0; i < difficulty; i++) {
-        squares[i].removeEventListener("click", finalCheck);
-    }
-};
+}
 
 //======================
 //static event listeners
@@ -150,7 +159,7 @@ gameover.addEventListener("click", function () {
 });
 
 //================================
-// background colour functionality
+// Background Colour functionality
 //================================
 
 function pickedBackgroundColor() {
@@ -161,7 +170,8 @@ body.style.backgroundColor = random();
 
 help.style.backgroundColor = random();
 
-//Not necessary. Allows me to work from a Live Server without transistion of body margin when CSS is updated. Can safely be removed.
+//Not necessary. Allows me to work from a Live Server without transistion of body margin when CSS is updated. 
+// Can safely be removed once added to CSS.
 window.onLoad = body.style.transition = "4s ease";
 
 //========================
@@ -260,11 +270,6 @@ function armed() {
     display.textContent = "false";
     //grace period before countdown begins
     myTimeoutID = setTimeout(timer, 1000)
-    //replace check with detonateCheck
-    for (let i = 0; i < difficulty; i++) {
-        squares[i].removeEventListener("click", check);
-        squares[i].addEventListener("click", finalCheck);
-    }
 }
 
 function explode() {
