@@ -21,7 +21,6 @@ const gameover = document.querySelector("#gameover");
 const help = document.querySelector(".help");
 const tooltip = document.querySelector("p");
 const scoreScreen = document.querySelector("#scoreScreen");
-const farewell = ["goodbye", "ciao", "gd gosh", "bye", "ouch", "bang", "tally ho", "oof", "oh dear", "fail"]
 let displayContent = [];
 
 //color generators 
