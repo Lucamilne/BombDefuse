@@ -18,9 +18,8 @@ const LED = document.querySelector(".LED");
 const LEDarmed = document.querySelector("#armed");
 const body = document.querySelector("body");
 const gameover = document.querySelector("#gameover");
-const help = document.querySelector(".help");
-const tooltip = document.querySelector("p");
 const scoreScreen = document.querySelector("#scoreScreen");
+const playAgain = document.querySelector("#play-again");
 let displayContent = [];
 
 //color generators 
@@ -28,7 +27,8 @@ function random() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
-    return "rgb(" + r + ", " + g + ", " + b + ")";
+    return `rgb(${r}, ${g }, ${b})`
+    // return `<span>R</span><span>G</span><span>B</span>(<span>${r}</span>, <span>${g}</span>, <span>${b}</span>)`;
 }
 
 function generateColors(difficulty) {
@@ -48,7 +48,6 @@ function randomColor() {
 //Generic game functions
 //======================
 
-//changing difficulty (amount of wires)
 function setDifficulty(val) {
     if (difficulty !== val) {
         difficulty = val;
@@ -59,7 +58,7 @@ function setDifficulty(val) {
 function resetGame() {
     colors = generateColors(difficulty);
     pickedColor = randomColor();
-    pickedColorDisplay.textContent = pickedColor;
+    pickedColorDisplay.innerHTML = pickedColor;
     squares.forEach(function (wire) {
         wire.style.display = "none";
     });
@@ -78,7 +77,6 @@ function newGame() {
         squares[i].addEventListener("click", pliersCut)
     }
     enableButtons();
-    generateRainbowText(pickedColorDisplay);
 };
 
 function correct() {
@@ -130,14 +128,6 @@ function updateLives() {
 //static event listeners
 //======================
 
-help.addEventListener("mouseover", function () {
-    tooltip.style.display = "block";
-});
-
-help.addEventListener("mouseout", function () {
-    tooltip.style.display = "none";
-})
-
 easy.addEventListener("click", function () {
     setDifficulty(3);
 })
@@ -166,8 +156,6 @@ function pickedBackgroundColor() {
 }
 
 body.style.backgroundColor = random();
-
-help.style.backgroundColor = random();
 
 //Not necessary. Allows me to work from a Live Server without transistion of body margin when CSS is updated. 
 // Can safely be removed once added to CSS.
@@ -276,19 +264,20 @@ function explode() {
     $(".bomb").hide();
     $(".explosion").fadeIn();
     $("#wrapper").fadeOut();
-    $(".help").fadeOut();
+    $("#help").fadeOut();
+    $(".health").fadeOut();
     //Game Over screen
     if (score === 0) {
-        scoreScreen.textContent = "You failed to defuse the bomb. Play again?";
+        scoreScreen.textContent = "You failed to defuse the bomb.";
     }
     else if (score > 1) {
-        scoreScreen.textContent = "You defused " + score + " bombs. Play again?";
+        scoreScreen.textContent = "You defused " + score + " bombs.";
     }
     else {
-        scoreScreen.textContent = "You defused " + score + " bomb. Play again?";
+        scoreScreen.textContent = "You defused " + score + " bomb.";
     }
     setTimeout(function () {
-        $("#gameover").fadeIn();
+        $("#gameover").fadeIn();       
     }, 1500);
 };
 
@@ -324,24 +313,6 @@ function timer() {
     }, 10);
 };
 
-//disables help until initial animation is complete
-setTimeout(function () {
-    help.style.pointerEvents = "auto";
-}, 3000);
-
-//rainbow text
-
-function generateRainbowText(element) {
-    var text = element.innerText;
-    element.innerHTML = "";
-    for (let i = 0; i < text.length; i++) {
-        let charElem = document.createElement("span");
-        charElem.style.color = "hsl(" + (360 * i / text.length) + ",80%,50%)";
-        charElem.innerHTML = text[i];
-        element.appendChild(charElem);
-    }
-};
-
 //pliers
 
 function pliersCut() {
@@ -368,7 +339,7 @@ function bombScale() {
     const bomb = document.querySelector(".bomb");
     let docHeight = document.querySelector("*").clientHeight;
     let docWidth = document.querySelector("*").clientWidth;
-    let wrapperHeight = document.querySelector("#wrapper").clientHeight * 2.5;
+    let wrapperHeight = document.querySelector("#wrapper").clientHeight * 4;
 
     //these are the hard coded px height and width that the bomb was initially drawn in
     const heightOfBomb = 945;

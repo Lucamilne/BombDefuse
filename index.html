@@ -11,6 +11,16 @@
     <title>Bomb Defusal RGB Game</title>
     <!-- jQuery for UI plugin-->
     <script type="text/javascript" src="./libs/jquery-3.4.1.min.js"></script>
+    <!-- Press Start 2p font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <!-- NES.css minify -->
+    <link
+      href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"
+      rel="stylesheet"
+    />
     <!-- snippet of CSS to avoid FoUC -->
     <style>
       html {
@@ -21,96 +31,50 @@
   </head>
 
   <body>
-    <div id="wrapper">
+    <div class="nes-container" id="wrapper">
       <h1>
-        <div>Cut the <span id="goal"></span></div>
-        <div>wire atop the bomb!</div>
+        Cut the
+        <div id="goal"></div>
+        wire atop the bomb!
       </h1>
     </div>
-    <div class="explosion">
-      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
-      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
-      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
-      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
-      <img src="./images/Boom.webp" alt="Explosion!" />
-      <div id="gameover">
-        <div class="gameover-anim">
-          <span>g</span><span>a</span><span>m</span><span>e </span><span>o</span
-          ><span>v</span><span>e</span><span>r</span>
-        </div>
-        <div>
-          <span id="scoreScreen"></span>
-        </div>
-      </div>
-    </div>
-    <p>
-      Click on the correct coloured wire as described by the header, e.g. Cut
-      the
-      <span>R</span><span>G</span><span>B</span>(<span>255</span>,
-      <span>255</span>, <span>255</span>) wire atop the bomb!
-      <br />
-      <br />
-      Each parameter (<span>red</span>, <span>green</span>, and
-      <span>blue</span>) defines the intensity of the color as an integer
-      between 0 and 255. Should you choose a wrong wire, the bomb will be armed
-      and a countdown will begin. Choose incorrectly again or let the timer run
-      down and it's game over!
-      <br />
-      <br />
-      You can reset the game, or choose new colours at any time by pressing the
-      <span>red</span> reset button.
-      <br />
-      <br />
-      Press the grey buttons to change the number of wires connected to the bomb
-      by 3, 6 and 9 respectively. Try 9 for a real challenge!
-    </p>
-    <figure class="help">?</figure>
-    <main class="bomb">
-      <div class="wire" id="wire1"></div>
-      <div class="wire" id="wire2"></div>
-      <div class="wire" id="wire3"></div>
-      <div class="wire" id="wire4"></div>
-      <div class="wire" id="wire5"></div>
-      <div class="wire" id="wire6"></div>
-      <div class="wire" id="wire7"></div>
-      <div class="wire" id="wire8"></div>
-      <div class="wire" id="wire9"></div>
-      <div class="receiver">
-        <div class="LED"></div>
-        <div id="armed"></div>
-      </div>
-      <div class="c4 c4-1"></div>
-      <div class="c4 c4-2"></div>
-      <div class="c4 c4-3"></div>
-      <nav class="circuit">
-        <button id="easy" title="Easy difficulty">3</button>
-        <button id="medium" title="Normal difficulty">6</button>
-        <button id="hard" title="Hard difficulty">9</button>
-        <div id="blockwire"></div>
-        <button id="reset" title="Reset game">
-          R
-          <div></div>
-        </button>
-      </nav>
-      <div class="tape"></div>
-      <div class="keypad-wires"></div>
-      <div class="calc-base">
-        <li class="bomb-button bomb-number">1</li>
-        <li class="bomb-button bomb-number">2</li>
-        <li class="bomb-button bomb-number">3</li>
-        <li class="bomb-button bomb-number">4</li>
-        <li class="bomb-button bomb-number">5</li>
-        <li class="bomb-button bomb-number">6</li>
-        <li class="bomb-button bomb-number">7</li>
-        <li class="bomb-button bomb-number">8</li>
-        <li class="bomb-button bomb-number">9</li>
-        <li class="bomb-button" id="backspace">DEL</li>
-        <li class="bomb-button bomb-number">0</li>
-        <li class="bomb-button" id="clear">C</li>
-      </div>
-      <div id="calc-display"></div>
-    </main>
-    <figure class="health" title="Remaining guesses">
+    <section>
+      <button
+        type="button"
+        class="nes-btn is-error"
+        id="help"
+        onclick="document.getElementById('dialog-rounded').showModal();"
+      >
+        Help
+      </button>
+      <dialog class="nes-dialog is-rounded" id="dialog-rounded">
+        <form method="dialog">
+          <p>
+            Click on the correct coloured wire as described by the header, e.g.
+            Cut the <span>R</span><span>G</span><span>B</span>(<span>255</span>,
+            <span>255</span>, <span>255</span>) wire atop the bomb!
+            <br />
+            <br />
+            Each parameter (<span>red</span>, <span>green</span>, and
+            <span>blue</span>) defines the intensity of the color as an integer
+            between 0 and 255. Should you choose a wrong wire, the bomb will be
+            armed and a countdown will begin. Choose incorrectly again or let
+            the timer run down and it's game over!
+            <br />
+            <br />
+            You can reset the game, or choose new colours at any time by
+            pressing the
+            <span>red</span> reset button.
+            <br />
+            <br />
+            Press the grey buttons to change the number of wires connected to
+            the bomb by 3, 6 and 9 respectively. Try 9 for a real challenge!
+          </p>
+          <button class="nes-btn is-success">Confirm</button>
+        </form>
+      </dialog>
+    </section>
+    <section class="health" title="Remaining guesses">
       <img
         src="./images/pixelheart.webp"
         class="heart"
@@ -123,7 +87,76 @@
         id="heart2"
         alt="lives"
       />
-    </figure>
+    </section>
+    <section class="explosion">
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Boom.webp" alt="Explosion!" />
+      <div class="nes-container" id="gameover">
+        <div class="gameover-anim">
+          <span>g</span><span>a</span><span>m</span><span>e </span><span>o</span
+          ><span>v</span><span>e</span><span>r</span>
+        </div>
+        <div>
+          <span id="scoreScreen"></span>
+        </div>
+        <button type="button" class="nes-btn is-success">Play Again</button>
+      </div>
+    </section>
+    <main class="bomb">
+      <div class="nes-pointer">
+        <div class="wire" id="wire1"></div>
+        <div class="wire" id="wire2"></div>
+        <div class="wire" id="wire3"></div>
+        <div class="wire" id="wire4"></div>
+        <div class="wire" id="wire5"></div>
+        <div class="wire" id="wire6"></div>
+        <div class="wire" id="wire7"></div>
+        <div class="wire" id="wire8"></div>
+        <div class="wire" id="wire9"></div>
+      </div>
+      <div class="receiver">
+        <div class="LED"></div>
+        <div id="armed"></div>
+      </div>
+      <div class="c4 c4-1"></div>
+      <div class="c4 c4-2"></div>
+      <div class="c4 c4-3"></div>
+      <nav class="circuit">
+        <button id="easy" title="Easy difficulty" class="nes-pointer">3</button>
+        <button id="medium" title="Normal difficulty" class="nes-pointer">
+          6
+        </button>
+        <button id="hard" title="Hard difficulty" class="nes-pointer">9</button>
+        <div id="blockwire"></div>
+        <button id="reset" title="Reset game" class="nes-pointer">
+          R
+          <div></div>
+        </button>
+      </nav>
+      <div class="tape"></div>
+      <div class="keypad-wires"></div>
+      <div class="calc-base">
+        <li class="bomb-button nes-pointer bomb-number">1</li>
+        <li class="bomb-button nes-pointer bomb-number">2</li>
+        <li class="bomb-button nes-pointer bomb-number">3</li>
+        <li class="bomb-button nes-pointer bomb-number">4</li>
+        <li class="bomb-button nes-pointer bomb-number">5</li>
+        <li class="bomb-button nes-pointer bomb-number">6</li>
+        <li class="bomb-button nes-pointer bomb-number">7</li>
+        <li class="bomb-button nes-pointer bomb-number">8</li>
+        <li class="bomb-button nes-pointer bomb-number">9</li>
+        <li class="bomb-button nes-pointer" id="backspace">DEL</li>
+        <li class="bomb-button nes-pointer bomb-number">0</li>
+        <li class="bomb-button nes-pointer" id="clear">C</li>
+      </div>
+      <div id="calc-display"></div>
+    </main>
+    <button type="button" class="nes-btn is-success" id="play-again">
+      Play Again
+    </button>
     <img src="./images/Pliers.png" id="pliers" alt="pliers" />
     <script type="text/javascript" src="bombDefuse.js"></script>
   </body>

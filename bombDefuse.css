@@ -1,9 +1,4 @@
 @font-face {
-  font-family: "gameover";
-  src: url("./fonts/Gameplay.ttf");
-}
-
-@font-face {
   font-family: "Calculator";
   src: url("./fonts/LCDAT&TPhoneTimeDate.ttf");
 }
@@ -20,51 +15,56 @@ html {
 
 body {
   margin: 0;
+  background-image: url("./images/diagmonds-light.png");
 }
 
 #wrapper {
   position: fixed;
-  top: 50%;
+  bottom: 50%;
+  left: -100%;
   z-index: 2;
-  display: flex;
+  justify-content: center;
   align-items: center;
   justify-content: center;
   height: auto;
-  padding: 0px;
-  width: 0%;
+  padding: 1vw;
+  width: 94%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 3%;
   background-color: white;
-  border-bottom: 3px solid #101010;
-  box-shadow: 0 -3px 0px black, var(--box-shadow);
   animation: slide 3s ease;
   animation-fill-mode: forwards;
+  border: double;
+  border-width: 8px;
 }
 
 h1 {
   opacity: 0;
-  font-family: monospace;
-  font-size: 5vw;
   letter-spacing: 2px;
+  font-size: 2.5vmin;
   text-align: center;
   text-transform: uppercase;
-  white-space: nowrap;
-  color: black;
   animation: fadeIn 1s linear;
   animation-fill-mode: forwards;
   animation-delay: 1.5s;
-  margin: 2vw;
+}
+
+#goal {
+  display: inline-block;
 }
 
 @keyframes slide {
   50% {
-    width: 100%;
+    left: 0;
   }
   85% {
-    width: 100%;
-    top: 50%;
+    left: 0;
+    bottom: 50%;
   }
   100% {
-    width: 100%;
-    top: 0;
+    left: 0;
+    bottom: 0;
   }
 }
 
@@ -130,38 +130,31 @@ h1 {
 }
 
 #gameover {
-  font-family: monospace;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: black;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  padding-left: 5%;
-  padding-right: 5%;
-  border-top: 3px solid #101010;
-  border-bottom: 3px solid #101010;
+  padding: 0 5% 0 5%;
   z-index: 3;
   left: 0;
   right: 0;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(255, 255, 255, 1) 10%,
-    rgba(255, 255, 255, 1) 90%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background-color: white;
   display: none;
+  border: double;
+  border-width: 8px;
   box-shadow: var(--box-shadow);
 }
 
 #gameover div {
-  display: flex;
-  justify-content: center;
   margin: 10px;
-  font-size: 3.5vmin;
+  font-size: 2.5vmin;
   text-align: center;
+}
+
+#gameover button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 3vmin;
+  margin-bottom: 3vmin;
 }
 
 #gameover div:nth-of-type(1) {
@@ -174,8 +167,8 @@ h1 {
 
 #gameover div:nth-of-type(1) span {
   position: relative;
-  font-family: "gameover";
-  font-size: 6vmin;
+  text-transform: uppercase;
+  font-size: 5vmin;
   animation: hop 1s ease-out infinite;
   animation-fill-mode: forwards;
   letter-spacing: 1vw;
@@ -230,67 +223,89 @@ h1 {
   }
 }
 
-.help {
+#help {
   position: fixed;
   margin: 3vw;
-  bottom: 0px;
-  color: white;
-  border: 1vmin solid white;
-  width: 15vmin;
-  height: 15vmin;
-  max-width: 75px;
-  max-height: 75px;
-  opacity: 0.2;
-  z-index: 2;
-  cursor: pointer;
-  font-family: sans-serif;
-  font-size: 6vh;
-  text-shadow: var(--text-shadow);
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 0 2px black, inset 0 0 0 2px black, 0 -3px 0px black,
-    0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px 5px rgba(0, 0, 0, 0.3),
-    0 18px 23px 15px rgba(0, 0, 0, 0.2);
+  padding: 1vmin;
+  top: 0;
   animation: fade 1s ease infinite;
   animation-delay: 3s;
   animation-iteration-count: 3;
-  pointer-events: none;
-}
-
-.help:hover {
-  opacity: 1;
-  transition: 1s ease;
+  font-size: 2.5vmin;
 }
 
 @keyframes fade {
   50% {
-    opacity: 1;
+    opacity: 0;
   }
 }
 
-p {
+.health {
+  display: grid;
+  grid-column-gap: 0;
+  grid-template-columns: 1fr 1fr;
   position: fixed;
-  display: none;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 2;
-  border-radius: 2%;
-  background-color: white;
-  width: 60vw;
-  height: auto;
-  padding: 2.5vh;
-  font-family: monospace;
-  font-size: 2vh;
-  border: 3px solid black;
-  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px 5px rgba(0, 0, 0, 0.3),
-    0 18px 23px 15px rgba(0, 0, 0, 0.2);
+  margin: 3vw;
+  right: 0px;
+  top: 0px;
+  width: 15vmin;
+  max-width: 150px;
+  max-height: 75px;
+  opacity: 1;
+}
+
+.health img {
+  width: 100%;
+  animation: heartbeat 1.5s ease;
+  animation-iteration-count: 2;
+}
+
+.lifelost {
+  animation: lifelost 1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes lifelost {
+  50% {
+    transform: scale(1.1);
+    filter: grayscale(80%);
+  }
+  100% {
+    transform: scale(1.1);
+    filter: grayscale(100%);
+    opacity: 0;
+  }
+}
+
+.health:hover img {
+  animation: heartbeat 1.5s ease;
+  animation-iteration-count: infinite;
+}
+
+@keyframes heartbeat {
+  25% {
+    transform: scale(1.1);
+  }
+  35% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.1);
+  }
+}
+
+#dialog-rounded {
+  max-width: 80%;
+  max-height: 80%;
+  font-size: 2.5vmin;
+  overflow: scroll;
+  overflow-x: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.nes-btn {
+  padding: 1vmin;
+  font-size: 2.5vmin;
 }
 
 p span:nth-of-type(3n + 0) {
@@ -301,6 +316,11 @@ p span:nth-of-type(3n + 1) {
 }
 p span:nth-of-type(3n + 2) {
   color: green;
+}
+
+#bomb-dialog {
+  position: absolute;
+  left: 600px;
 }
 
 .bomb {
@@ -470,7 +490,6 @@ p span:nth-of-type(3n + 2) {
   position: absolute;
   top: 187px;
   left: 204px;
-
   overflow: hidden;
   width: 296px;
   height: 56px;
@@ -480,6 +499,7 @@ p span:nth-of-type(3n + 2) {
   direction: rtl;
   border: 12px solid #202020;
   border-radius: 1px;
+  box-sizing: content-box;
   background-color: rgb(213, 213, 82);
   box-shadow: 0 0 0 5px #171717, inset 0 0 10px 3px rgba(0, 0, 0, 0.3),
     0 5px 10px 5px rgba(0, 0, 0, 0.5);
@@ -546,7 +566,6 @@ p span:nth-of-type(3n + 2) {
   width: 660px;
   height: 80px;
   background-color: #404040;
-  background-image: url("./images/Tape_texture.png");
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 -1px 2px 0 rgba(0, 0, 0, 0.4),
     0 0 0 2px #303030;
 }
@@ -557,10 +576,8 @@ p span:nth-of-type(3n + 2) {
   left: 60px;
   width: 600px;
   height: 80px;
-
   content: "";
   background-color: #404040;
-  background-image: url("./images/Tape_texture.png");
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 -2px 3px 0 rgba(0, 0, 0, 0.4),
     0 0 0 2px #303030;
 }
@@ -601,7 +618,6 @@ p span:nth-of-type(3n + 2) {
   width: 33px;
   height: 31px;
   padding-bottom: 5px;
-  cursor: pointer;
   color: rgba(0, 0, 0, 0.7);
   font-family: sans-serif;
   font-size: 14px;
@@ -695,17 +711,12 @@ button:focus {
   left: -15px;
   width: 20px;
   height: 15px;
-
   content: "";
   border-radius: 7px 7px 0 0;
   background-color: #fff;
   box-shadow: 0 0 0 2px #202020, inset 4px 0 3px rgba(0, 0, 0, 0.4),
     inset 8px 0 5px rgba(0, 0, 0, 0.2), inset -4px 0 3px rgba(0, 0, 0, 0.4),
     inset -8px 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.wire:hover {
-  cursor: pointer;
 }
 
 #wire1 {
@@ -759,56 +770,17 @@ button:focus {
   }
 }
 
-.health {
-  display: grid;
-  grid-column-gap: 0;
-  grid-template-columns: 1fr 1fr;
-  position: fixed;
-  margin: 3vw;
-  right: 0px;
-  bottom: 0px;
-  width: 15vmin;
-  max-width: 150px;
-  max-height: 75px;
-  opacity: 1;
-}
-
-.health img {
-  width: 100%;
-}
-
-.lifelost {
-  animation: lifelost 1s ease;
-  animation-fill-mode: forwards;
-}
-
-@keyframes lifelost {
-  50% {
-    transform: scale(1.1);
-    filter: grayscale(80%);
-  }
-  100% {
-    transform: scale(1.1);
-    filter: grayscale(100%);
-    opacity: 0;
-  }
-}
-
-.health:hover img {
-  animation: heartbeat 1.5s ease;
-  animation-iteration-count: infinite;
-}
-
-@keyframes heartbeat {
-  25% {
-    transform: scale(1.1);
-  }
-  35% {
-    transform: scale(1);
-  }
-  45% {
-    transform: scale(1.1);
-  }
+#play-again {
+  display: none;
+  position: absolute;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 3%;
+  padding: 1vmin;
+  bottom: 0;
+  animation: fade 1s ease infinite;
+  animation-iteration-count: 3;
 }
 
 /* Media Queries */
@@ -820,25 +792,8 @@ button:focus {
 }
 
 @media only screen and (min-width: 768px) {
-  h1 {
-    font-size: 3vw;
-    margin: 1vh;
-  }
-  h1 div {
-    display: inline;
-  }
   .bomb {
     transform: translate(-50%, -50%) scale(0.8);
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  h1 {
-    font-size: 36px;
-  }
-  .help {
-    font-size: 75px;
-    border-width: 8px;
   }
 }
 
