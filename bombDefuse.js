@@ -28,7 +28,6 @@ function random() {
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
     return `rgb(${r}, ${g }, ${b})`
-    // return `<span>R</span><span>G</span><span>B</span>(<span>${r}</span>, <span>${g}</span>, <span>${b}</span>)`;
 }
 
 function generateColors(difficulty) {
@@ -58,7 +57,7 @@ function setDifficulty(val) {
 function resetGame() {
     colors = generateColors(difficulty);
     pickedColor = randomColor();
-    pickedColorDisplay.innerHTML = pickedColor;
+    pickedColorDisplay.textContent = pickedColor;
     squares.forEach(function (wire) {
         wire.style.display = "none";
     });
@@ -115,7 +114,6 @@ function updateLives() {
     if (lives === 2) {
         document.querySelectorAll(".heart").forEach(function(element) {
             element.classList.remove("lifelost")
-            // element.style.opacity = "1";
         });
     } else if (lives === 1) {
         document.getElementById("heart1").classList.add("lifelost");
@@ -141,11 +139,6 @@ hard.addEventListener("click", function () {
 })
 
 reset.addEventListener("click", resetGame);
-
-gameover.addEventListener("click", function () {
-    //reload the page from cache
-    location.reload();
-});
 
 //================================
 // Background Colour functionality
@@ -215,7 +208,7 @@ function backspaceButton() {
 var id;
 
 function blinkingText() {
-    display.textContent = display.textContent == "press" ? "play" : "press";
+    display.textContent = display.textContent == "press" ? "reset" : "press";
 }
 
 function stopBlinkingText() {

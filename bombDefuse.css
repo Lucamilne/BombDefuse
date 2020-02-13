@@ -15,7 +15,7 @@ html {
 
 body {
   margin: 0;
-  background-image: url("./images/diagmonds-light.png");
+  background-image: url("./images/shattered.png");
 }
 
 #wrapper {
@@ -39,21 +39,6 @@ body {
   border-width: 8px;
 }
 
-h1 {
-  opacity: 0;
-  letter-spacing: 2px;
-  font-size: 2.5vmin;
-  text-align: center;
-  text-transform: uppercase;
-  animation: fadeIn 1s linear;
-  animation-fill-mode: forwards;
-  animation-delay: 1.5s;
-}
-
-#goal {
-  display: inline-block;
-}
-
 @keyframes slide {
   50% {
     left: 0;
@@ -68,9 +53,36 @@ h1 {
   }
 }
 
+h1 {
+  opacity: 0;
+  letter-spacing: 2px;
+  font-size: 2.5vmin;
+  text-align: center;
+  text-transform: uppercase;
+  animation: fadeIn 1s linear;
+  animation-fill-mode: forwards;
+  animation-delay: 1.5s;
+}
+
 @keyframes fadeIn {
   100% {
     opacity: 1;
+  }
+}
+
+#goal {
+  display: inline-block;
+  color: red;
+  animation: rgbcycle 5s infinite step-end;
+  animation-delay: 1s;
+}
+
+@keyframes rgbcycle {
+  33% {
+    color: green;
+  }
+  66% {
+    color: blue;
   }
 }
 
@@ -229,7 +241,7 @@ h1 {
   padding: 1vmin;
   top: 0;
   animation: fade 1s ease infinite;
-  animation-delay: 3s;
+  /* animation-delay: 3s; */
   animation-iteration-count: 3;
   font-size: 2.5vmin;
 }
@@ -256,8 +268,6 @@ h1 {
 
 .health img {
   width: 100%;
-  animation: heartbeat 1.5s ease;
-  animation-iteration-count: 2;
 }
 
 .lifelost {
@@ -275,11 +285,6 @@ h1 {
     filter: grayscale(100%);
     opacity: 0;
   }
-}
-
-.health:hover img {
-  animation: heartbeat 1.5s ease;
-  animation-iteration-count: infinite;
 }
 
 @keyframes heartbeat {
