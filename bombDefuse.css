@@ -72,18 +72,10 @@ h1 {
 
 #goal {
   display: inline-block;
-  color: red;
-  animation: rgbcycle 5s infinite step-end;
-  animation-delay: 1s;
-}
-
-@keyframes rgbcycle {
-  33% {
-    color: green;
-  }
-  66% {
-    color: blue;
-  }
+  background-image: linear-gradient(to left, violet, indigo, blue, green, gold, orange, red);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .explosion {
