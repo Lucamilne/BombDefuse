@@ -2,273 +2,162 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="The Bomb Defusal RGB Colour Game is a unique interpretation of the RGB color game, a static web app rite of passage. It's primary purpose is to show a more advanced understanding of CSS and Javascript than is typically required to make the original base game."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bomb Defusal RGB Game</title>
+    <!-- jQuery for UI plugin-->
+    <script type="text/javascript" src="./libs/jquery-3.4.1.min.js"></script>
+    <!-- Press Start 2p font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <!-- NES.css minify -->
+    <link
+      href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"
+      rel="stylesheet"
+    />
+    <!-- snippet of CSS to avoid FoUC -->
     <style>
-      @import url("https://fonts.googleapis.com/css?family=Lato|Libre+Baskerville");
+      html {
+        visibility: hidden;
+      }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-    />
-    <script src="./libs/jQuery/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./public/stylesheets/covid.css"
-    />
+    <link rel="stylesheet" type="text/css" href="bombDefuse.css" />
   </head>
+
   <body>
-    <div id="container">
-      <div id="main">
-        <header id="landing">
-          <p>report</p>
-          <p>covid-19</p>
-        </header>
-        <h2 class="ui center aligned header inverted" id="title">
-          REPORT CASE
-        </h2>
-        <form action="http://127.0.0.1:5500/" method="GET">
-          <div class="ui one column stacking grid">
-            <div class="column">
-              <div
-                class="ui center aligned segment inverted"
-                id="province-segment"
-              >
-                <h3 class="ui header">Select Household Province</h3>
-                <div
-                  class="ui floating selection dropdown labeled icon button"
-                  id="province-dropdown"
-                >
-                  <input type="hidden" name="province" />
-                  <i class="home icon"></i>
-                  <span class="default text">Province</span>
-                  <div class="menu">
-                    <div class="item">Anhui 安徽省</div>
-                    <div class="item">Beijing 北京市</div>
-                    <div class="item">Chongqing 重庆市</div>
-                    <div class="item">Fuijan 福建省</div>
-                    <div class="item">Guangdong 广东省</div>
-                    <div class="item">Gansu 甘肃省</div>
-                    <div class="item">
-                      Guangxi Zhuang (Autonomous)<br />广西壮族自治区
-                    </div>
-                    <div class="item">Guizhou 贵州省</div>
-                    <div class="item">Henan 河南省</div>
-                    <div class="item">Hubei 湖北省</div>
-                    <div class="item">Hebei 河北省</div>
-                    <div class="item">Hainan 海南省</div>
-                    <div class="item">Heilongjiang 黑龙江省</div>
-                    <div class="item">Hunan 湖南省</div>
-                    <div class="item">Jilin 吉林省</div>
-                    <div class="item">Jiangsu 江苏省</div>
-                    <div class="item">Jiangxi 江西省</div>
-                    <div class="item">Liaoning 辽宁省</div>
-                    <div class="item">
-                      Inner Mongolia (Autonomous)<br />內蒙古自治区
-                    </div>
-                    <div class="item">
-                      Ningxia Hui (Autonomous)<br />宁夏回族自治区
-                    </div>
-                    <div class="item">Qinghai 青海省</div>
-                    <div class="item">Sichuan 四川省</div>
-                    <div class="item">Shandong 山东省</div>
-                    <div class="item">Shanghai 上海市</div>
-                    <div class="item">Shaanxi 陕西省</div>
-                    <div class="item">Shanxi 山西省</div>
-                    <div class="item">Tianjin 天津市</div>
-                    <div class="item">
-                      Xianjiang Uyghur (Autonomous)<br />新疆维吾尔自治区
-                    </div>
-                    <div class="item">Tibet (Autonomous)<br />西藏自治区</div>
-                    <div class="item">Yunnan 云南省</div>
-                    <div class="item">Zhejiang 浙江省</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div
-                class="ui center aligned segment inverted disabled"
-                id="household-size"
-              >
-                <h3 class="ui header">Household Size</h3>
-                <div id="household-size-selector">
-                  <input type="hidden" name="household-size" />
-                  <button
-                    type="button"
-                    value="1"
-                    class="ui inverted button disabled"
-                  >
-                    <i class="male icon"></i>
-                    <div class="ui divider"></div>
-                    1
-                  </button>
-                  <button
-                    type="button"
-                    value="2"
-                    class="ui inverted button disabled"
-                  >
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <div class="ui divider"></div>
-                    2
-                  </button>
-                  <button
-                    type="button"
-                    value="3"
-                    class="ui inverted button disabled"
-                  >
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <div class="ui divider"></div>
-                    3
-                  </button>
-                  <button
-                    type="button"
-                    value="4"
-                    class="ui inverted button disabled"
-                  >
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <div class="ui divider"></div>
-                    4
-                  </button>
-                  <button
-                    type="button"
-                    value="5"
-                    class="ui inverted button disabled"
-                  >
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <div class="ui divider"></div>
-                    5
-                  </button>
-                  <button
-                    type="button"
-                    value="6"
-                    class="ui inverted button disabled"
-                  >
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <i class="male icon"></i>
-                    <div class="ui divider"></div>
-                    6+
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div
-                class="ui center aligned segment inverted disabled"
-                id="household-status"
-              >
-                <h3 class="ui header">Household Status</h3>
-                <p>
-                  Is there more than 1 infected within the household?
-                </p>
-                <div class="ui buttons" id="infected-query">
-                  <input type="hidden" name="infected" />
-                  <button type="button" class="ui inverted button disabled no">
-                    No
-                  </button>
-                  <div class="or"></div>
-                  <button
-                    type="button"
-                    class="ui inverted red button disabled yes"
-                  >
-                    Yes
-                  </button>
-                </div>
-                <div
-                  class="ui floating selection dropdown"
-                  id="infected-number"
-                >
-                  <input type="hidden" />
-                  <span class="default text">Total number of infected</span>
-                  <div class="menu">
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                    <div class="item">4</div>
-                    <div class="item">5</div>
-                    <div class="item">6+</div>
-                  </div>
-                </div>
-                <div
-                  class="ui top pointing red basic label"
-                  id="infected-label"
-                >
-                  Please specify number of infected
-                </div>
-                <div class="ui divider"></div>
-                <p>
-                  Have there been any deaths within the household?
-                </p>
-                <div class="ui buttons" id="deceased-query">
-                  <input type="hidden" name="deaths" />
-                  <button type="button" class="ui inverted button disabled no">
-                    No
-                  </button>
-                  <div class="or"></div>
-                  <button
-                    type="button"
-                    class="ui inverted red button disabled yes"
-                  >
-                    Yes
-                  </button>
-                </div>
-                <div
-                  class="ui dropdown floating selection"
-                  id="deceased-number"
-                >
-                  <input type="hidden" />
-                  <span class="default text">Total number deceased</span>
-                  <div class="menu">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                    <div class="item">4</div>
-                    <div class="item">5</div>
-                    <div class="item">6+</div>
-                  </div>
-                </div>
-                <div
-                  class="ui top pointing red basic label"
-                  id="deceased-label"
-                >
-                  Please specify number of deceased
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div
-              class="ui center aligned segment inverted disabled"
-              id="submit"
-            >
-              <p>
-                Please click below to submit the information you have detailed
-                above
-              </p>
-              <button class="ui button disabled animate-button" id="submit-btn">
-                Submit
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+    <div class="nes-container" id="wrapper">
+      <h1>
+        Cut the
+        <div id="goal"></div>
+        wire atop the bomb!
+      </h1>
     </div>
-    <footer></footer>
-    <script src="./public/js/covid.js"></script>
+    <section>
+      <button
+        type="button"
+        class="nes-btn is-error"
+        id="help"
+        onclick="document.getElementById('dialog-rounded').showModal();"
+      >
+        Help
+      </button>
+      <dialog class="nes-dialog is-rounded" id="dialog-rounded">
+        <form method="dialog">
+          <p>
+            Click on the correct coloured wire as described by the header, e.g.
+            Cut the <span>R</span><span>G</span><span>B</span>(<span>255</span>,
+            <span>255</span>, <span>255</span>) wire atop the bomb!
+            <br />
+            <br />
+            Each parameter (<span>red</span>, <span>green</span>, and
+            <span>blue</span>) defines the intensity of the color as an integer
+            between 0 and 255. Should you choose a wrong wire, the bomb will be
+            armed and a countdown will begin. Choose incorrectly again or let
+            the timer run down and it's game over!
+            <br />
+            <br />
+            You can reset the game, or choose new colours at any time by
+            pressing the
+            <span>red</span> reset button.
+            <br />
+            <br />
+            Press the grey buttons to change the number of wires connected to
+            the bomb by 3, 6 and 9 respectively. Try 9 for a real challenge!
+          </p>
+          <button class="nes-btn is-success">Confirm</button>
+        </form>
+      </dialog>
+    </section>
+    <section class="health" title="Remaining guesses">
+      <img
+        src="./images/pixelheart.webp"
+        class="heart"
+        id="heart1"
+        alt="lives"
+      />
+      <img
+        src="./images/pixelheart.webp"
+        class="heart"
+        id="heart2"
+        alt="lives"
+      />
+    </section>
+    <section class="explosion">
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
+      <img src="./images/Boom.webp" alt="Explosion!" />
+      <div class="nes-container" id="gameover">
+        <div class="gameover-anim">
+          <span>g</span><span>a</span><span>m</span><span>e </span><span>o</span
+          ><span>v</span><span>e</span><span>r</span>
+        </div>
+        <div>
+          <span id="scoreScreen"></span>
+        </div>
+        <button type="button" class="nes-btn is-success" onclick="location.reload();">Play Again</button>
+      </div>
+    </section>
+    <main class="bomb">
+      <div class="nes-pointer">
+        <div class="wire" id="wire1"></div>
+        <div class="wire" id="wire2"></div>
+        <div class="wire" id="wire3"></div>
+        <div class="wire" id="wire4"></div>
+        <div class="wire" id="wire5"></div>
+        <div class="wire" id="wire6"></div>
+        <div class="wire" id="wire7"></div>
+        <div class="wire" id="wire8"></div>
+        <div class="wire" id="wire9"></div>
+      </div>
+      <div class="receiver">
+        <div class="LED"></div>
+        <div id="armed"></div>
+      </div>
+      <div class="c4 c4-1"></div>
+      <div class="c4 c4-2"></div>
+      <div class="c4 c4-3"></div>
+      <nav class="circuit">
+        <button id="easy" title="Easy difficulty" class="nes-pointer">3</button>
+        <button id="medium" title="Normal difficulty" class="nes-pointer">
+          6
+        </button>
+        <button id="hard" title="Hard difficulty" class="nes-pointer">9</button>
+        <div id="blockwire"></div>
+        <button id="reset" title="Reset game" class="nes-pointer">
+          R
+          <div></div>
+        </button>
+      </nav>
+      <div class="tape"></div>
+      <div class="keypad-wires"></div>
+      <div class="calc-base">
+        <li class="bomb-button nes-pointer bomb-number">1</li>
+        <li class="bomb-button nes-pointer bomb-number">2</li>
+        <li class="bomb-button nes-pointer bomb-number">3</li>
+        <li class="bomb-button nes-pointer bomb-number">4</li>
+        <li class="bomb-button nes-pointer bomb-number">5</li>
+        <li class="bomb-button nes-pointer bomb-number">6</li>
+        <li class="bomb-button nes-pointer bomb-number">7</li>
+        <li class="bomb-button nes-pointer bomb-number">8</li>
+        <li class="bomb-button nes-pointer bomb-number">9</li>
+        <li class="bomb-button nes-pointer" id="backspace">DEL</li>
+        <li class="bomb-button nes-pointer bomb-number">0</li>
+        <li class="bomb-button nes-pointer" id="clear">C</li>
+      </div>
+      <div id="calc-display"></div>
+    </main>
+    <button type="button" class="nes-btn is-success" id="play-again">
+      Play Again
+    </button>
+    <img src="./images/Pliers.png" id="pliers" alt="pliers" />
+    <script type="text/javascript" src="bombDefuse.js"></script>
   </body>
 </html>
