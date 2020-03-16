@@ -3,7 +3,7 @@ let lives = 2;
 let difficulty = 6;
 let colors = generateColors(difficulty);
 let pickedColor = randomColor();
-const squares = document.querySelectorAll(".wire");
+const wires = document.querySelectorAll(".wire");
 const easy = document.querySelector("#easy");
 const medium = document.querySelector("#medium");
 const hard = document.querySelector("#hard");
@@ -54,11 +54,17 @@ function setDifficulty(val) {
     }
 }
 
+function colorPercentage(color) {
+    let values = color.substring(4, color.length - 1).split(", ");
+    var percent = values.map(val => Math.round(val / 2.55));
+    return `${percent[0]}% red, ${percent[1]}% green, & ${percent[2]}% blue`
+}
+
 function resetGame() {
     colors = generateColors(difficulty);
     pickedColor = randomColor();
-    pickedColorDisplay.textContent = pickedColor;
-    squares.forEach(function (wire) {
+    pickedColorDisplay.textContent = colorPercentage(pickedColor);
+    wires.forEach(function (wire) {
         wire.style.display = "none";
     });
     resetDisplay();
@@ -70,10 +76,10 @@ function resetGame() {
 
 function newGame() {
     for (let i = 0; i < difficulty; i++) {
-        squares[i].style.display = "block";
-        squares[i].style.borderColor = colors[i];
-        squares[i].addEventListener("click", check);
-        squares[i].addEventListener("click", pliersCut)
+        wires[i].style.display = "block";
+        wires[i].style.borderColor = colors[i];
+        wires[i].addEventListener("click", check);
+        wires[i].addEventListener("click", pliersCut)
     }
     enableButtons();
 };
@@ -85,8 +91,8 @@ function correct() {
     pliersCut();
     //remove interactivity on game completion
     for (let i = 0; i < difficulty; i++) {
-        squares[i].removeEventListener("click", check);
-        squares[i].removeEventListener("click", pliersCut)
+        wires[i].removeEventListener("click", check);
+        wires[i].removeEventListener("click", pliersCut)
 
     }
     //update score
