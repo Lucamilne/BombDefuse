@@ -21,6 +21,11 @@ const gameover = document.querySelector("#gameover");
 const scoreScreen = document.querySelector("#scoreScreen");
 const playAgain = document.querySelector("#play-again");
 let displayContent = [];
+let isMobileViewport = false;
+
+if (document.documentElement.clientWidth < 768) {
+    isMobileViewport = true;
+}
 
 //color generators 
 function random() {
@@ -36,7 +41,7 @@ function generateColors(difficulty) {
         arr.push(random());
     }
     return arr;
-}ó
+}
 
 function randomColor() {
     let randIndexOfColors = Math.floor(Math.random() * difficulty);
@@ -335,10 +340,14 @@ function pliersCut() {
 //==============================================
 
 function bombScale() {
+    if (isMobileViewport) {
+        //do soemthing
+    }
+
     const bomb = document.querySelector(".bomb");
     let docHeight = document.querySelector("*").clientHeight;
     let docWidth = document.querySelector("*").clientWidth;
-    let wrapperHeight = document.querySelector("#wrapper").clientHeight * 4;
+    let wrapperHeight = document.querySelector("#wrapper").clientHeight * 3;
 
     //these are the hard coded px height and width that the bomb was initially drawn in
     const heightOfBomb = 945;
