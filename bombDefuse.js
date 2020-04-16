@@ -341,7 +341,7 @@ function pliersCut() {
 
 function bombScale() {
     if (isMobileViewport) {
-        //do soemthing
+        return;
     }
 
     const bomb = document.querySelector(".bomb");
