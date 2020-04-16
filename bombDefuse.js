@@ -36,7 +36,7 @@ function generateColors(difficulty) {
         arr.push(random());
     }
     return arr;
-}
+}ó
 
 function randomColor() {
     let randIndexOfColors = Math.floor(Math.random() * difficulty);
