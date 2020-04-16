@@ -1,6 +1,6 @@
 # BombDefuse
 
-The Bomb Defusal RGB Game is a unique interpretation of the RGB color game, a static web app rite of passage. It's primary purpose is to show a more advanced understanding of CSS and Javascript than is typically required to make the original base game. The game has been written in standard javascript with use of jQuery for a single function.
+The Bomb Defusal RGB Game is a unique interpretation of the RGB color game, a static web app rite of passage. It's primary purpose is to show a more advanced understanding of CSS and Javascript than is typically required to make the original base game. The game has been written in standard javascript with use of jQuery for animation work.
 
 
 Some additional features that I've added that isn't typical of the standard RGB color game:
