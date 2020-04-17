@@ -23,8 +23,8 @@ const playAgain = document.querySelector("#play-again");
 let displayContent = [];
 let isMobileViewport = false;
 const helpBtn = document.querySelector("#help");
-const instructions = document.querySelector("dialog");
-const instructionsCloseBtn = document.querySelector("#close-instruction-btn");
+const instructions = document.querySelector("#instructions");
+const instructionsCloseBtn = document.querySelector("#close-instructions-btn");
 
 helpBtn.addEventListener("click", function() {
     instructions.style.display = "block";
@@ -33,8 +33,6 @@ helpBtn.addEventListener("click", function() {
 instructionsCloseBtn.addEventListener("click", function() {
     instructions.style.display = "none";
 })
-
-instructions
 
 if (document.documentElement.clientWidth < 768) {
     isMobileViewport = true;
