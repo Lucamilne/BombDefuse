@@ -23,14 +23,22 @@ const playAgain = document.querySelector("#play-again");
 let displayContent = [];
 let isMobileViewport = false;
 const helpBtn = document.querySelector("#help");
+const filter = document.querySelector(".filter");
 const instructions = document.querySelector("#instructions");
 const instructionsCloseBtn = document.querySelector("#close-instructions-btn");
 
 helpBtn.addEventListener("click", function() {
+    filter.style.display = "block";
     instructions.style.display = "block";
 })
 
 instructionsCloseBtn.addEventListener("click", function() {
+    filter.style.display = "none";
+    instructions.style.display = "none";
+})
+
+filter.addEventListener("click", function() {
+    this.style.display = "none";
     instructions.style.display = "none";
 })
 
