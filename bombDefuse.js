@@ -180,10 +180,6 @@ function pickedBackgroundColor() {
 
 body.style.backgroundColor = random();
 
-//Not necessary. Allows me to work from a Live Server without transistion of body margin when CSS is updated. 
-// Can safely be removed once added to CSS.
-window.onLoad = body.style.transition = "4s ease";
-
 //========================
 //LCD screen interactivity
 //========================

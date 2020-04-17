@@ -291,7 +291,7 @@ h1 {
 }
 
 #instructions, .filter {
-  display: block;
+  display: none;
   z-index: 100;
 }
 
