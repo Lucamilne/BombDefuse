@@ -799,3 +799,12 @@ button:focus {
     transform: translate(-50%, -50%) scale(1.2);
   }
 }
+
+dialog {
+  display: none;
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
