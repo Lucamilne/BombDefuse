@@ -23,18 +23,24 @@ const playAgain = document.querySelector("#play-again");
 let displayContent = [];
 let isMobileViewport = false;
 const helpBtn = document.querySelector("#help");
-const instructions = document.querySelector("dialog");
-const instructionsCloseBtn = document.querySelector("#close-instruction-btn");
+const filter = document.querySelector(".filter");
+const instructions = document.querySelector("#instructions");
+const instructionsCloseBtn = document.querySelector("#close-instructions-btn");
 
 helpBtn.addEventListener("click", function() {
+    filter.style.display = "block";
     instructions.style.display = "block";
 })
 
 instructionsCloseBtn.addEventListener("click", function() {
+    filter.style.display = "none";
     instructions.style.display = "none";
 })
 
-instructions
+filter.addEventListener("click", function() {
+    this.style.display = "none";
+    instructions.style.display = "none";
+})
 
 if (document.documentElement.clientWidth < 768) {
     isMobileViewport = true;
@@ -173,10 +179,6 @@ function pickedBackgroundColor() {
 }
 
 body.style.backgroundColor = random();
-
-//Not necessary. Allows me to work from a Live Server without transistion of body margin when CSS is updated. 
-// Can safely be removed once added to CSS.
-window.onLoad = body.style.transition = "4s ease";
 
 //========================
 //LCD screen interactivity

@@ -15,6 +15,7 @@ html {
 
 body {
   margin: 0;
+  transition: background-color ease 4s;
   background-image: url("./images/shattered.png");
 }
 
@@ -233,7 +234,6 @@ h1 {
   padding: 1vmin;
   top: 0;
   animation: fade 1s ease infinite;
-  /* animation-delay: 3s; */
   animation-iteration-count: 3;
   font-size: 2.5vmin;
 }
@@ -291,14 +291,33 @@ h1 {
   }
 }
 
-#dialog-rounded {
-  max-width: 80%;
+#instructions, .filter {
+  display: none;
+  z-index: 100;
+}
+
+.filter {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#instructions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
   max-height: 80%;
   font-size: 2.5vmin;
   overflow: scroll;
   overflow-x: hidden;
   box-shadow: var(--box-shadow);
+  background-color: white;
 }
+
+
 
 .nes-btn {
   padding: 1vmin;
@@ -798,13 +817,4 @@ button:focus {
   .bomb {
     transform: translate(-50%, -50%) scale(1.2);
   }
-}
-
-dialog {
-  display: none;
-  z-index: 100;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
