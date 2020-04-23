@@ -15,6 +15,7 @@ html {
 
 body {
   margin: 0;
+  transition: background-color ease 4s;
   background-image: url("./images/shattered.png");
 }
 
