@@ -74,7 +74,14 @@ function randomColor() {
 function setDifficulty(val) {
     if (difficulty !== val) {
         difficulty = val;
+        score = 0;
+        lives = 2;
+
         resetGame();
+        // these functions are defined in HighScore.js
+        removeHighScoreTable();
+        defineCollection();
+        renderHighScoreTable(collection);
     }
 }
 

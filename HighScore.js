@@ -46,10 +46,34 @@ function renderError() {
     nameField.disabled = true;
 }
 
+let collection;
+
+// this is not working due to the way difficulty currently works
+function defineCollection() {
+    const h3 = document.querySelector("#gameover h3");
+
+    if (difficulty === 3) {
+        collection = "highScoresEasy";
+        h3.innerHTML = 'Mode: <span class="nes-text is-success">EASY</span>';
+    } else
+    if (difficulty === 6) {
+        collection = "highScores";
+        h3.innerHTML = 'Mode: <span class="nes-text is-warning">NORMAL</span>';
+    } else
+    if (difficulty === 9) {
+        collection = "highScoresHard";
+        h3.innerHTML = 'Mode: <span class="nes-text is-error">HARD</span>';
+    }
+}
+
+defineCollection();
+renderHighScoreTable(collection);
+
 let scoreToBeat;
 
-//returns promise of high scores in descending order limited to 3
-database.collection("highScores").orderBy("score", "desc").limit(3).get().then(function(querySnapshot) {    
+function renderHighScoreTable(collection) {
+    //returns promise of high scores in descending order limited to 3
+database.collection(collection).orderBy("score", "desc").limit(3).get().then(function(querySnapshot) {    
     querySnapshot.forEach(function(doc) {
         renderScores(doc);
         //sets up a score to beat that allows the pushing of a score to the server (stops too many submissions)
@@ -60,6 +84,13 @@ database.collection("highScores").orderBy("score", "desc").limit(3).get().then(f
     // will display error screen
     renderError();
 });
+}
+
+function removeHighScoreTable() {
+    while (scoresList.firstChild) {
+        scoresList.removeChild(scoresList.firstChild);
+    }
+}
 
 function databaseAddSuccess() {
     //disable submit button
@@ -82,8 +113,8 @@ function databaseAddError(error) {
     $("#submission-prompt p").html('<span class="nes-text is-error">Failed</span> saving score! err: ' + error)
 }
 
-function submitHighScore() {
-    database.collection("highScores").add({
+function submitHighScore(collection) {
+    database.collection(collection).add({
         name: nameField.value,
         score: score
     }).then(
@@ -96,7 +127,7 @@ function submitHighScore() {
 playerNameSubmit.addEventListener("click", () => {
     //this is to stop my db getting spammed with scores
     if (score > scoreToBeat) {
-        submitHighScore();
+        submitHighScore(collection);
     }
     else {
         databaseAddSuccess();
