@@ -39,39 +39,40 @@
       </h1>
     </div>
     <section>
-      <button
-        type="button"
-        class="nes-btn is-error"
-        id="help"
-      >
+      <button type="button" class="nes-btn is-error" id="help">
         Help
       </button>
       <div class="filter"></div>
       <div class="nes-container is-rounded" id="instructions">
-          <h3>Instructions</h3>
-            <br />
-          <p>
-            Click on the correct colour wire as described by the header, e.g.
-            Cut the <span>0-100% red, </span><span>0-100% green, </span>& <span>0-100% blue</span> wire atop the bomb!
-            <br />
-            <br />
-            Each parameter (<span>red</span>, <span>green</span>, and
-            <span>blue</span>) defines the intensity of the color as a percentage
-            between 0 and 100%. Should you choose a wrong wire, the bomb will be
-            armed and a countdown will begin. Choose incorrectly again or let
-            the timer run down and it's game over!
-            <br />
-            <br />
-            You can reset the game, or choose new colours at any time by
-            pressing the
-            <span>red</span> reset button.
-            <br />
-            <br />
-            Press the grey buttons to change the number of wires connected to
-            the bomb by 3, 6 and 9 respectively. Try 9 for a real challenge!
-          </p>
-          <button class="nes-btn is-success" id="close-instructions-btn">Confirm</button>
+        <h3>Instructions</h3>
+        <br />
+        <p>
+          Click on the correct colour wire as described by the header, e.g. Cut
+          the <span>0-100% red, </span><span>0-100% green, </span>&
+          <span>0-100% blue</span> wire atop the bomb!
+          <br />
+          <br />
+          Each parameter (<span>red</span>, <span>green</span>, and
+          <span>blue</span>) defines the intensity of the color as a percentage
+          between 0 and 100%. Should you choose a wrong wire, the bomb will be
+          armed and a countdown will begin. Choose incorrectly again or let the
+          timer run down and it's game over!
+          <br />
+          <br />
+          You can reset the game, or choose new colours at any time by pressing
+          the
+          <span>red</span> reset button.
+          <br />
+          <br />
+          Press the grey buttons to change the number of wires connected to the
+          bomb by 3, 6 and 9 respectively. Try 9 for a real challenge!
+        </p>
+        <div class="button-container">
+          <button class="nes-btn is-success" id="close-instructions-btn">
+            Confirm
+          </button>
         </div>
+      </div>
     </section>
     <section class="health" title="Remaining guesses">
       <img
@@ -101,7 +102,63 @@
         <div>
           <span id="scoreScreen"></span>
         </div>
-        <button type="button" class="nes-btn is-success" onclick="location.reload();">Play Again</button>
+        <h2><span class="nes-text is-primary">High Scores!</span></h2>
+        <div class="nes-table-responsive">
+          <table class="nes-table is-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="scores-list"></tbody>
+          </table>
+        </div>        
+        <div
+          class="nes-container with-title is-centered"
+          id="error-report"
+          style="display: none;"
+        >
+          <p class="title">Error</p>
+          <p>
+            <span class="nes-text is-error">Problem fetching high scores!</span>
+          </p>
+        </div>
+        <form class="nes-field" id="playerName">
+          <label for="name_field">Your name</label>
+          <input
+            type="text"
+            id="name_field"
+            placeholder="ENTER NAME"
+            autocomplete="off"
+            class="nes-input"
+            title="Must contain only letters and numbers between 3 to 8 characters"
+            required
+          />
+        </form>
+        <section class="message-list" id="submission-prompt" style="display: none;">
+          <div class="nes-balloon from-left">
+            <p>Your score has been <span class="nes-text is-success">saved!</span></p>
+          </div>
+        </section>
+        <div class="button-container">
+          <button
+            type="button"
+            form="playerName"
+            id="playerNameSubmit"
+            class="nes-btn is-disabled"
+            disabled
+          >
+            Submit
+          </button>
+          <button
+            type="button"
+            class="nes-btn is-error"
+            onclick="location.reload();"
+          >
+            Restart
+          </button>
+        </div>
       </div>
     </section>
     <main class="bomb">
@@ -153,10 +210,11 @@
       </div>
       <div id="calc-display"></div>
     </main>
-    <button type="button" class="nes-btn is-success" id="play-again">
-      Play Again
-    </button>
     <img src="./images/Pliers.png" id="pliers" alt="pliers" />
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script type="text/javascript" src="bombDefuse.js"></script>
+    <script type="text/javascript" src="HighScore.js"></script>
   </body>
 </html>

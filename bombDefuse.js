@@ -27,17 +27,17 @@ const filter = document.querySelector(".filter");
 const instructions = document.querySelector("#instructions");
 const instructionsCloseBtn = document.querySelector("#close-instructions-btn");
 
-helpBtn.addEventListener("click", function() {
+helpBtn.addEventListener("click", function () {
     filter.style.display = "block";
     instructions.style.display = "block";
 })
 
-instructionsCloseBtn.addEventListener("click", function() {
+instructionsCloseBtn.addEventListener("click", function () {
     filter.style.display = "none";
     instructions.style.display = "none";
 })
 
-filter.addEventListener("click", function() {
+filter.addEventListener("click", function () {
     this.style.display = "none";
     instructions.style.display = "none";
 })
@@ -51,7 +51,7 @@ function random() {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g }, ${b})`
+    return `rgb(${r}, ${g}, ${b})`
 }
 
 function generateColors(difficulty) {
@@ -142,7 +142,7 @@ function check() {
 
 function updateLives() {
     if (lives === 2) {
-        document.querySelectorAll(".heart").forEach(function(element) {
+        document.querySelectorAll(".heart").forEach(function (element) {
             element.classList.remove("lifelost")
         });
     } else if (lives === 1) {
@@ -287,16 +287,16 @@ function explode() {
     $(".health").fadeOut();
     //Game Over screen
     if (score === 0) {
-        scoreScreen.textContent = "You failed to defuse the bomb.";
+        scoreScreen.innerHTML = "You <span class='nes-text is-error'>failed</span> to defuse the bomb.";
     }
     else if (score > 1) {
-        scoreScreen.textContent = "You defused " + score + " bombs.";
+        scoreScreen.innerHTML = "You defused <span class='nes-text is-success'>" + score + "</span> bombs.";
     }
     else {
-        scoreScreen.textContent = "You defused " + score + " bomb.";
+        scoreScreen.innerHTML = "You defused <span class='nes-text is-success'>" + score + "</span> bomb.";
     }
     setTimeout(function () {
-        $("#gameover").fadeIn();       
+        $("#gameover").fadeIn();
     }, 1500);
 };
 
