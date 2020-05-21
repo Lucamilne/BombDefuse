@@ -29,6 +29,4 @@ Some additional features that I've added that isn't typical of the standard RGB 
 
 - An animation of pliers is played whenever a wire is cut.
 
-Known issues: 
-
-Instructions not displayed currently on Safari browsers.
+- High score leaderboard with Firebase back end
