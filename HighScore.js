@@ -54,15 +54,15 @@ function defineCollection() {
 
     if (difficulty === 3) {
         collection = "highScoresEasy";
-        h3.innerHTML = 'Mode: <span class="nes-text is-success">EASY</span>';
+        h3.innerHTML = 'MODE: <span class="nes-text is-success">EASY</span>';
     } else
     if (difficulty === 6) {
         collection = "highScores";
-        h3.innerHTML = 'Mode: <span class="nes-text is-warning">NORMAL</span>';
+        h3.innerHTML = 'MODE: <span class="nes-text is-warning">NORMAL</span>';
     } else
     if (difficulty === 9) {
         collection = "highScoresHard";
-        h3.innerHTML = 'Mode: <span class="nes-text is-error">HARD</span>';
+        h3.innerHTML = 'MODE: <span class="nes-text is-error">HARD</span>';
     }
 }
 
