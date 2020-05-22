@@ -18,7 +18,7 @@
     />
     <!-- NES.css minify -->
     <link
-      href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"
+      href="./libs/nes.css/nes.min.css"
       rel="stylesheet"
     />
     <!-- snippet of CSS to avoid FoUC -->
@@ -74,19 +74,26 @@
         </div>
       </div>
     </section>
-    <section class="health" title="Remaining guesses">
-      <img
-        src="./images/pixelheart.webp"
-        class="heart"
-        id="heart1"
-        alt="lives"
-      />
-      <img
-        src="./images/pixelheart.webp"
-        class="heart"
-        id="heart2"
-        alt="lives"
-      />
+    <section id="hud">
+      <div class="health" title="Remaining guesses">
+        <img
+          src="./images/pixelheart.webp"
+          class="heart"
+          id="heart1"
+          alt="lives"
+        />
+        <img
+          src="./images/pixelheart.webp"
+          class="heart"
+          id="heart2"
+          alt="lives"
+        />
+      </div>
+      <div class="score-container" title="How many bombs you have defused in a row">
+        <h3><span class="nes-text">Score</span></h3>
+        <p class="score-number">0</p>
+        </div>
+      </div>
     </section>
     <section class="explosion">
       <img src="./images/Smoke.png" class="smoke" alt="Smoke" />
@@ -114,7 +121,7 @@
             </thead>
             <tbody id="scores-list"></tbody>
           </table>
-        </div>        
+        </div>
         <div
           class="nes-container with-title is-centered"
           id="error-report"
@@ -137,7 +144,11 @@
             required
           />
         </form>
-        <section class="message-list" id="submission-prompt" style="display: none;">
+        <section
+          class="message-list"
+          id="submission-prompt"
+          style="display: none;"
+        >
           <div class="nes-balloon from-left">
             <p></p>
           </div>

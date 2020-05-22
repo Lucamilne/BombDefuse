@@ -19,6 +19,7 @@ const LEDarmed = document.querySelector("#armed");
 const body = document.querySelector("body");
 const gameover = document.querySelector("#gameover");
 const scoreScreen = document.querySelector("#scoreScreen");
+const scoreNum = document.querySelector(".score-number");
 const playAgain = document.querySelector("#play-again");
 let displayContent = [];
 let isMobileViewport = false;
@@ -91,6 +92,20 @@ function colorPercentage(color) {
     return `${percent[0]}% red, ${percent[1]}% green, & ${percent[2]}% blue`
 }
 
+let lethal = true;
+
+//this function stops the player spamming reset until they get favourable wires
+//yet still allows to retain their score pressing reset after picking the correct wire
+function resetScore() {
+    if (lethal) {
+        score = 0;
+        lives = 2;
+    }
+    else {
+        return;
+    }
+}
+
 function resetGame() {
     colors = generateColors(difficulty);
     pickedColor = randomColor();
@@ -98,12 +113,15 @@ function resetGame() {
     wires.forEach(function (wire) {
         wire.style.display = "none";
     });
+    resetScore();
     resetDisplay();
     resetIdleLED();
     timedFunctionClear()
+    updateScore();
     updateLives();
     newGame();
 }
+
 
 function newGame() {
     for (let i = 0; i < difficulty; i++) {
@@ -112,12 +130,15 @@ function newGame() {
         wires[i].addEventListener("click", check);
         wires[i].addEventListener("click", pliersCut)
     }
+
+    lethal = true;
     enableButtons();
 };
 
 function correct() {
     defusal();
     lives = 2;
+    lethal = false;
     pickedBackgroundColor();
     pliersCut();
     //remove interactivity on game completion
@@ -128,6 +149,7 @@ function correct() {
     }
     //update score
     score++;
+    updateScore()
 }
 
 function check() {
@@ -157,6 +179,10 @@ function updateLives() {
     } else {
         document.getElementById("heart2").classList.add("lifelost");
     }
+}
+
+function updateScore() {
+    scoreNum.textContent = score;
 }
 
 //======================
